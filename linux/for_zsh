@@ -1,0 +1,24 @@
+sudo apt-get install zsh
+
+там до этого нужно настроечку сделать, чтоб вместо баша zsh вылезал
+oh-my-zsh   
+
+темы
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+############по умолчанию
+
+chsh -s /usr/bin/zsh  nicking
+
+  -h, --help                    показать данное сообщение и закончить работу
+  -R, --root КАТ_CHROOT         каталог, в который выполняется chroot
+  -s, --shell ОБОЛОЧКА          новая регистрационная оболочка для учётной
+                                записи
+#########################################
+nano ~/.zshrc 
+
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/local/bin/virtualenvwrapper.sh
+
+

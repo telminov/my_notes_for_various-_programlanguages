@@ -1,0 +1,2 @@
+    if request.user.has_perm('prof.administrator_confirm_edit'):
+        c['success_edit'] = True

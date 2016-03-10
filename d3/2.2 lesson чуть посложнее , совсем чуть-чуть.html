@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="http://d3js.org/d3.v3.min.js"> </script>
+<style>
+.item{
+    margin-bottom: 7px;
+    font-size: 15px;
+    margin-right: 2px;
+    min-height: 25px;
+    min-width: 20px;
+}
+.data {
+    background-color: steelblue;
+    text-align: right;
+    color: #f0f8ff;
+    display:inline-block;
+}
+.name{
+    display:inline-block;
+    margin-left:5px;
+}
+</style>
+<body>
+ 
+<div class="diagram"></div>
+ 
+<script type="text/javascript">
+var phones = [ {name: 'iPhone 6', price: 64},
+{name: 'Samsung Galaxy S5', price: 48},
+{name: 'LG G4', price: 36},
+{name : 'MiPad 5', price: 25}];
+ 
+// Enter
+d3.select('div.diagram')
+    .selectAll('div')
+    .data(phones).enter()
+    .append('div') //будет div.item
+        .attr('class', 'item') // каждый div.item и div.data  попадут в один класс div.diagram
+    .append('div') // будет div.data        
+        .attr('class', 'data') 
+    .append('span');
+ 
+// Update
+d3.select('div.diagram')
+    .selectAll('div.item')
+    .data(phones)
+    .select('div')
+        .style('width', function (d) { return (d.price * 3) + 'px';})
+    .select('span')
+        .text(function (d) { return d.price;});
+ 
+d3.select('div.diagram')
+    .selectAll('div.item').data(phones)
+    .append('div')
+    .attr('class', 'name')
+    .text(function (d) {return d.name;});
+ 
+// Exit
+d3.select('div.diagram').selectAll('div.item').data(phones).exit().remove();
+</script>
+</body>
+</html>

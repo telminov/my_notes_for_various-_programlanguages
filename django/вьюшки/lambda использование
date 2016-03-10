@@ -1,0 +1,2 @@
+self.assert_all(user, lambda o: self.assertIn(o,mobil_user_speciality_group_example))
+

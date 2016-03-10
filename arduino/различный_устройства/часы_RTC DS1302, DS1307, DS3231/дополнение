@@ -1,0 +1,27 @@
+http://lesson.iarduino.ru/page/podklyuchenie-rtc-chasy-realnogo-vremeni-ds1302-ds1307-ds3231-k-arduino/
+
+RTC DS1307	Arduino UNO
+GND	GND
+VCC	+5V
+SDA	A4
+SCL	A5
+Подключение DS1302 к Arduino:
+
+
+RTC DS1302	Arduino UNO
+GND	GND
+VCC	+5V
+RST	10 (Можно изменить на другие в скетче)
+CLK	13 (Можно изменить на другие в скетче)
+DAT	12 (Можно изменить на другие в скетче)
+Подключение DS3231 к Arduino:
+
+
+RTC DS3231	Arduino UNO
+GND	GND
+VCC	+5V
+SDA	A4
+SCL	A5
+
+В example (примере библы все есть)
+сперва выставляем дату (расскоментировываем )

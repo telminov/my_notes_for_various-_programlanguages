@@ -1,0 +1,10 @@
+sudo apt-get install python-tk
+
+sudo apt-get install python3-tk
+
+###########################################################
+# для версии python 2.7 и ниже
+import Tkinter
+
+# для версии python 3.0 и выше
+import tkinter

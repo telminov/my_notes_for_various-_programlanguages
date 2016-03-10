@@ -1,0 +1,28 @@
+# -*- coding:utf-8 -*-
+import subpocess
+
+subprocess.Popen(['touch plato.txt'], shell=True)
+
+
+#Пример ниже вызвает программу prog находящуюся в каталоге my folder и передает 
+#ей параметр 4: 
+child=Popen([‘./my folder/prog’, ’4’]) 
+
+
+#Пример ниже выполнит процесс arg передав ему параметры. 
+child=Popen(['-n', '2', 'my.txt'], executable='arg') 
+
+#Пример ниже показывает как сменить оболочку для выполнения 
+child=sp.Popen(['--version'], executable='/bin/zsh', shell=True) 
+zsh 4.3.10 (i686-pc-linux-gnu) 
+
+# Однако с bash результат работы оказывается неверным задуманному, причина такого поведения мне на данный момент не ясна: 
+child=sp.Popen(['--version'], executable='/bin/bash', shell=True) 
+/bin/sh: --: недопустимая опция
+
+#Пример ниже вызовет процесс, перехватит его выводы в канал и считав выведет на устройство вывода. 
+child=sp.Popen(['ls'],shell=True,stdout=sp.PIPE) 
+s=' ' 
+while s: 
+    s=child.stdout.readline() 
+    print s.rstrip()

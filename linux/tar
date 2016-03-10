@@ -1,0 +1,43 @@
+A  -- append to an archive
+c  -- create a new archive
+f  -- specify archive file or device
+t  -- list archive contents
+u  -- update archive
+v  -- verbose output
+x  -- extract files from an archive
+
+tar xf archive.tar.xz
+tar xf archive.tar.gz
+tar xf archive.tar
+
+
+TAR
+
+Упаковать:
+
+tar -cvf test.tar test
+или
+tar -zcvf tast.tar.gz test
+
+Посмотреть:
+
+tar -tvf test.tar
+tar -ztvf test.tar.gz
+
+Распаковать:
+
+tar -xvf test.tar
+tar -zxvf test.tar.gz
+
+GZIP
+
+gzip test  – упакует, добавит gz и УДАЛИТ! файл
+gunzip test.gz  – распакует и УДАЛИТ! test.gz
+
+Посмотреть без распаковки:
+
+zless
+
+bzip2 -d
+
+

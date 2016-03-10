@@ -1,0 +1,16 @@
+lsusb  (-v с подробностями) -просмотр usb устройств 
+
+wifi   - http://robocraft.ru/blog/electronics/3162.html
+ifconfig — включение беспроводного адаптера,
+iwlist — список доступных беспроводных сетей,
+sudo iwlist wlan0 scan
+sudo iwlist wlan0 scan | grep ESSID
+
+iwconfig — конфигурация беспроводного соединения,
+dhclient — получения IP-адреса через dhcp,
+wpa_supplicant — для использования WPA аутентификации.
+
+----------работа с файлами---------------
+sudo find / -type d -name 'mis_mm'    поиск папки mis_mm
+
+df -h    		свободное место на дисках

@@ -1,0 +1,3 @@
+sudo screen /dev/ttyUSB0 115200
+
+https://geektimes.ru/post/255084/

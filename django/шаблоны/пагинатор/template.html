@@ -1,0 +1,19 @@
+    
+
+    <tr>
+        <td>#</td>
+
+
+        
+
+    {% for obj in page.object_list %}
+    <tr>
+        <td>{{ forloop.counter|add:page.counter_start }}</td>
+
+
+
+        
+    {% block paginator %}
+        {% include "lib/bootstrap/paginator.html" %}
+        {% include "lib/bootstrap/paginator.html" with page=page_obj %}
+    {% endblock paginator %}

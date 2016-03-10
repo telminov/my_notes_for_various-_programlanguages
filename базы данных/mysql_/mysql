@@ -1,0 +1,16 @@
+или phpmyadmin:
+там нужен пользователь (изначально у всех root)
+http://127.0.0.1/phpmyadmin/index.php
+
+mysql -u root -p 1 
+mysql -u root -p - для конфиденц
+use mis_mm
+GRANT ALL PRIVILEGES ON mis_mm TO root@localhost  IDENTIFIED BY 'pass';
+ //и для nicking
+mysql> select * from lab_priceservice limit 1; - показать
+mysql>alter table mobil_organization drop column lab_price_id; удалить поле в таблице
+mysql> show tables;
+mysql> show create table lab_price; посмотреть табличку
+mysql> drop table lab_price_orgs; -удалить таблицу
+http://rtfm.co.ua/mysql-commands/
+

@@ -1,0 +1,74 @@
+
+arduino
+
+sudo apt-get install arduino | 
+sudo usermod -a -G tty pi
+sudo usermod -a -G dialout pi
+sudo apt-get install ttf-inconsolata 
+sudo apt-get install python-serial python3-serial
+
+прошивка арду с консоли с помощью INO
+git clone git://github.com/amperka/ino.git
+cd ino/
+sudo make install
+установит в /usr/local/ino
+$ mkdir beep
+$ cd beep
+$ ino init -t blink
+$ заливаем скетч в src/sketch.ino
+$ ino build
+$ ino upload
+
+(((((((не обязательно
+#TODO я теперь хз вручную прописывал
+sudo apt-get install picocom     для ино
+mkvirtualen ino
+pip install    			из библы ино!!!
+	jinja2
+	pyserial
+	configobj
+	ordereddict
+	argparse
+
+
+))))))))))))
+
+
+
+pycharm
+sudo apt-get install openjdk-7-jre
+sudo apt-get install python-pip
+sudo apt-get install python-dev
+sudo apt-get install virtualenv
+sudo apt-get install virtualenvwrapper 
+mkdir ~/.virtualenvs
+echo "export WORKON_HOME=$HOME/.virtualenvs" ~/.bashrc
+echo "source /usr/local/bin/virtualenvwrapper.sh" ~/.bashrc 
+source ~/.bashrc
+
+sudo pip install ipython
+
+
+mkvirtualenv example
+pip install django pillow 
+
+
+
+git -------------------------------
+ssh-keygen    - 3 раза enter
+cat ~/.ssh/id_rsa.pub  
+
+
+----работа с видео
+sudo apt-get install luvcview
+
+отправка почты  http://volttech.pulscen.ru/articles/67815
+sudo apt-get install sendemail libio-socket-ssl-perl libnet-ssleay-perl
+
+
+
+sudo tar -xzvf pycharm-2.6.2.tar.gz* -C /opt   *наш пакет
+sudo ln -s /opt/pycharm-2.6.2*/bin/pycharm.sh  /usr/bin/pycharm
+sudo chmod +x /opt/pycharm-2.6.2*/bin/pycharm.sh
+
+

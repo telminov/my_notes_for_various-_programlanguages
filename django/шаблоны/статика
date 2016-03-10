@@ -1,0 +1,6 @@
+ 
+
+{% load staticfiles %}
+
+            <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+

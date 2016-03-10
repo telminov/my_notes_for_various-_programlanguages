@@ -1,0 +1,23 @@
+Компиляция программ производится командой:
+
+gcc <имя_файла>
+После этого, если процесс компиляции пройдет успешно, то вы получите загружаемый файл a.out, запустить который можно командой:
+
+./a.out
+Для примера давайте напишем маленькую простейшую программку:
+
+#include <stdio.h>
+
+int main(){
+	printf("[http://linux.firststeps.ru]\n");
+	printf("Our first program for Linux.\n");
+	return 0;
+};
+И запустим ее:
+
+
+nicking@nicking-Lenovo-G560 ~ $ gcc 1.cpp 
+nicking@nicking-Lenovo-G560 ~ $ ./a.out 
+[http://linux.firststeps.ru]
+Our first program for Linux.
+

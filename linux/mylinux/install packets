@@ -1,0 +1,22 @@
+sudo apt-get update && 
+sudo apt-get upgrade &&
+
+sudo apt-get install libgdal-dev dh-autoreconf htop docker gdal-bin python-numpy python-scipy liblapack-dev libatlas-dev python-dev python-setuptools gfortran python-pandas python-matplotlib ipython ipython-notebook python-nose python-sympy curl tree postgresql postgresql-server-dev-9.3 postgresql-client libblas-dev nginx nginx-full terminator git git-core git-flow python-virtualenv virtualenvwrapper python-pip subversion openjdk-7-jdk nano build-essential protobuf-compiler libprotobuf-dev python-pip python-dev virtualenvwrapper zsh mysql-client npm nodejs sublime-txt gconf-editor supervisor libzmq-dev scrot 
+
+mysql-server, phpmyadmin
+
+############################################
+sudo apt-get install arduino && sudo usermod -a -G tty nicking && sudo usermod -a -G dialout nicking
+########################################
+sudo npm install -g coffee-script
+sudo npm install --save coffee-script
+###########################
+sudo apt-get install python python-tk idle python-pmw python-imaging
+########################
+.bashrc  и .zshrcе
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/local/bin/virtualenvwrapper.sh
+###########################
+не забудь
+skype, teamviewer

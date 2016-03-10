@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+/*body {
+  margin: 0;
+  background: #222;
+  min-width: 960px;
+}
+
+rect {
+  fill: none;
+  pointer-events: all;
+}
+
+circle {
+  fill: none;
+  stroke-width: 2.5px;
+}*/
+
+</style>
+<body>
+    <description></description>
+    <br>
+    <graf></graf>
+<script src="d3/d3.v3.min.js"></script>
+ <script type="text/javascript">
+
+			//Width and height
+            // var dataset = {{ count_request_mounth }};   //TODO тут мы получаем наши данные на аяксом
+            dataset = [40, 43, 10, 100, 43, 41, 70, 50]
+            console.log(dataset);
+			var w = dataset.length * 20;
+			var h = 250;
+			var barPadding = 1;
+
+            var max =  Math.max.apply(null, dataset);
+                        console.log(max);
+
+            var k = h/max; // коэф для подгона кол-во высот столбцов под высоту SVG
+            var k_color = 90/dataset.length;
+			//Create SVG element
+			var svg = d3.selectAll("graf")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+
+			svg.selectAll("rect")
+			   .data(dataset)
+			   .enter()
+			   .append("rect")
+			   .attr("x", function(d, i) { //будет подстраиваться под ширину
+			   		return i * (w / dataset.length);
+			   })
+			   .attr("y", function(d) { // эту штуку надо доработать, нужно смотреть от максимального значения столбца!
+                        return h - (d * k); // будет d * коэфициент   от (высоты svg)/ (max_входных данных со столбца)
+			   })
+			   .attr("width", w / dataset.length - barPadding)
+			   .attr("height", function(d) { // учитывать как и для получения y !!!! для большей гибкости
+			   		return d * k;
+			   })
+			   .attr("fill", function(d, i) {
+					return d3.rgb(90, 60, (k_color*i)+50 ); // меняем цвет
+			   })
+                .on('mouseover',function(d,i) {
+                    d3.select(this)
+                            .attr("width", function(){
+                                if (i>0){
+                                    console.log('i>0');
+                                    return w / dataset.length - barPadding+4;
+                                }
+                                else {
+                                    console.log(i);
+                                    console.log('когда i = 0');
+                                    return w / dataset.length - barPadding}
+                            })
+                            .attr("x", function() { //будет подстраиваться под ширину
+                                    if ((i!=0)) {
+                                        console.log('i>0 !=end el');
+                                        return i * (w / dataset.length) - 2;
+                                    }
+                                    else {
+                                        return i * (w / dataset.length);
+                                    }
+                               })
+                      .attr({
+                                fill: d3.rgb(120, 80, 200 )
+                    });
+                  })
+		      .on('mouseout',function (d,i) {
+		        d3.select(this)
+                        .transition()
+                        .delay(function(d, i) { //идет переход по 1-му объекту
+                            return i * 100;
+                          })
+		          .attr({
+                            x: i * (w / dataset.length),
+                        width:  w / dataset.length - barPadding,
+                            fill: d3.rgb(90, 60, (k_color*i)+50 )
+				    });
+		        })
+               .on("click", function(d, i) {
+
+                    d3.selectAll("description")
+                        .text(function() {
+                            return "столбец ="+i + "  кол-во запросов ="+d;
+                        })
+                        .style("color", function(d) {
+                            if (d > 15) {	//Threshold of 15
+                                return "red";
+                            } else {
+                                return "black";
+                            }
+                        });
+                    });
+
+			svg.selectAll("text")
+			   .data(dataset)
+			   .enter()
+			   .append("text")
+			   .text(function(d) {
+			   		return d;
+			   })
+			   .attr("text-anchor", "middle")
+			   .attr("x", function(d, i) {
+			   		return i * (w / dataset.length) + (w / dataset.length - barPadding) / 2;
+			   })
+			   .attr("y", function(d) {
+			   		 // т.к. height будет динамически изм - продумать тут логику
+                    if ((d * k) > 30) {
+                        return h - (d * k) + 14;
+                        }
+			   })
+			   .attr("font-family", "sans-serif")
+			   .attr("font-size", "11px")
+			   .attr("fill", "white");
+		</script>

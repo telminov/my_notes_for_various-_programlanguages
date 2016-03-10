@@ -1,0 +1,21 @@
+from urllib import urlopen
+# from urllib.request import urlopen (Python 3)
+def page(url):
+    def get():
+        return urlopen(url).read()
+    return get
+
+
+тут подробнее 
+from urllib import urlopen
+# from urllib.request import urlopen (Python 3)
+def page(url):
+    def get():
+        return urlopen(url).read() #
+    return get #если передавать get() то data - строка
+data = page('http://www.mkyong.com/mongodb/mongodb-aggregate-and-group-example/')
+# print c    выведет респонс
+print data.__closure__
+print data.__closure__[0].cell_contents
+print data   #типо data это функция, и показывает ее место
+print data() #получаем сам респонс

@@ -1,0 +1,22 @@
+<a href="#modal_delete_layer" class="btn btn-default" data-toggle="modal">
+        удалить слой... допили меня
+    </a>
+
+{#    модальное окно для удаления   #}
+    <div class="modal fade" id="modal_delete_layer" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title">Вы действительно хотите удалить слой?</h3>
+                </div>
+                <div class="modal-body">
+                        <p>О БОЖЕ.. все-такие хотите?(</p>
+{#                    <a href="{% url 'emb_delete_layer' map_id=map.id layer_z_index=layer.z_index %}">Удалить</a>#}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть окно</button>
+                </div>
+            </div>
+        </div>
+    </div>

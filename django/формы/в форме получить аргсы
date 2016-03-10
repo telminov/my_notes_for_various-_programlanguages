@@ -1,0 +1,14 @@
+и где то во вьюхе -
+form = Manager(request.POST or None, user=request.user)
+
+
+39	class Manager(mobil.forms.Manager):
+40	    def __init__(self, *args, **kwargs):
+
+41	        user = kwargs.pop('user', None) !!!!!!!!!!!
+
+42	        super(Manager, self).__init__(*args, **kwargs)
+43	        if user:
+44	            self.user = user
+45	        if hasattr(self, 'user') and self.user and hasattr(self.user, 'mobil_user'):
+46	            self.fields['manager'].initial = get_mobil_user_first_manager(self.user)

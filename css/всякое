@@ -1,0 +1,19 @@
+caption {
+    caption-side: bottom; //top|bottom|initial|inherit;
+}
+вниз  
+
+div {
+    opacity: 0.5;
+}
+#для id
+. для class
+
+для кавычек
+q {
+    quotes: "«" "»" "‹" "›";
+}
+<p><q>This is a <q>quote</q> inside a quote.</q></p>
+This is a quote inside a quote.
+
+

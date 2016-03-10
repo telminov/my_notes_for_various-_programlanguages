@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html> </html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>D3 Test</title>
+		<script type="text/javascript" src="d3/d3.v3.min.js"></script>
+	</head>
+	<body>
+
+		<script type="text/javascript">
+		
+			var dataset = [ 5, 10, 15, 20, 25 ]; //n =  5
+			
+			d3.select("body").selectAll("p")
+				.data(dataset)
+				.enter()
+				.append("p")
+				.text(function(d) {
+					return "I can count up to " + d;
+				})
+				.style("color", function(d) {
+					if (d >= 15) {	//Threshold of 15
+						return "red";
+					} else {
+						return "black";
+					}
+				});
+
+				// new
+				var data2 = [
+					    {"name": "Paul", "height": 190},
+					    {"name": "Sam", "height": 170}
+					];
+				var p = d3.select('body').selectAll('p')
+	          		.data(data2, function(d) { return d.name; });
+					p.enter().append('p');
+					// p.exit().remove();
+					p.text(function(d) { return d.height; });
+							
+		</script>
+
+		<chtougodno> ЧИТО угоднро</chtougodno>л
+		<p> И тут у нас что то есть</p>
+	</body>
+</html>
+
+

@@ -1,0 +1,21 @@
+{% extends 'mobil/base_report.html' %}
+
+{% block table_content %}
+
+    <a class="btn btn-block btn-blue" href="{%  url 'mobil.views.report.logging_users' %}"> Все пользователи </a>
+    <tr>
+        <td>Пользователь</td>
+        <td>Дата создания</td>
+        <td>url</td>
+        <td>ip</td>
+    </tr>
+    {% for obj in object_list %}
+    <tr>
+        <td><a href='{% url 'mobil.views.report.logging_for_username' obj.user.id %}'>{{ obj.user }}</a></td>
+        <td>{{ obj.dc }}</td>
+        <td><a href='{% url 'mobil.views.report.logging_for_url_and_user' obj.user.id %}?url={{ obj.url }}'>{{ obj.url }}</a></td>
+        <td>{{ obj.user.ip }}</td>
+    </tr>
+    {% endfor %}
+
+{% endblock table_content %}

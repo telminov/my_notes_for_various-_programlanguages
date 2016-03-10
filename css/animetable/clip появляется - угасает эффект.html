@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+#clipDiv {
+    width: 100px;
+    height: 100px;
+    background-color: coral;
+    color: white;
+    position: absolute;
+    -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+    animation: mymove 5s infinite;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes mymove {
+    50% {clip: rect(0px, 50px, 50px, 0px);}
+}
+
+/* Standard syntax */
+@keyframes mymove {
+    50% {clip: rect(0px, 50px, 50px, 0px);}
+}
+</style>
+</head>
+<body>
+
+<p>The clip property is <em>animatable</em> in CSS, but the animation does not work as expected.</p>
+<p><b>Note:</b> CSS Animations do not work in Internet Explorer 9 and earlier versions.</p>
+
+<div id="clipDiv">
+  <h1>myDIV</h1>
+</div>
+
+</body>
+</html>

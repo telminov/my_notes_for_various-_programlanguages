@@ -1,0 +1,14 @@
+лучше эциито делать через функции (быстрее в 1.5 раз)
+class Countdown(object):
+	def __init__(self,n):
+		self.n = n
+	def next(self):
+		r = self.n
+		self.n -= 1
+		return r
+ёё
+# Пример использования
+c = Countdown(10)
+	while True:
+		v = c.next() # Получить следующее значение
+		if not v: break

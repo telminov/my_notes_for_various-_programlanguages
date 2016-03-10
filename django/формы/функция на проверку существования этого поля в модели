@@ -1,0 +1,13 @@
+   
+class PriceEdit(forms.ModelForm):
+
+    orgs = MultiOrganizationChoices(label=u'Организация', required=True)
+    class Meta:
+        model = models.Price
+        fields = ('name', 'description', 'sort_priority', 'orgs')
+
+  def clean_name(self):
+        name = self.cleaned_data['name']
+        if models.Price.standard_objects.filter(name=name).exists():
+             raise forms.ValidationError(u'Есть прайс с именем "%s" среди удаленных прайсов' % name)
+         return name

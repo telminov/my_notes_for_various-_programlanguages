@@ -1,0 +1,17 @@
+    pipe = [
+        {'$match': match},
+        {"$group": {
+            "_id": {'day': {"$dayOfMonth": "$dc"}, 'month': {'$month': "$dc"},
+                    'year': {'$year': '$dc'}},
+            "count": {"$sum": 1},
+            }
+        },
+        {'$sort': {'_id.day': 1}},
+    ]
+
+    result = get_db().request_log.aggregate(pipe)['result']
+
+    sorted_result = sorted(result, key=lambda elem: datetime.datetime(elem['_id']['year'],
+                                                                    elem['_id']['month'],
+                                                                    elem['_id']['day'],
+                                                                    ))

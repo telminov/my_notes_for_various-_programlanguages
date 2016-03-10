@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		body {
+			background: #897;
+			text-align: center;
+			margin-top: 10%;
+		}
+	</style>
+</head>
+<body>
+
+	<a href="#" onclick="return fire()">link</a>
+	<div style="position: relative;">
+		<canvas id="1canvas"  style="position: absolute; left: 0; top: 0; z-index: 0;" width="640" height="480"> </canvas>
+		<canvas id="2canvas" style="position: absolute; left: 0; top: 0; z-index: 1;" width="640" height="480"> </canvas>
+	</div>
+<a href="#" onclick="return fire()">link</a>
+
+	<script type="text/javascript" src="sprite2.js"></script>
+	<script type="text/javascript">
+		//////////////////////////first canvas///////////////////////
+		// Show loading notice
+		console.log('video');
+		var canvas = document.getElementById('1canvas');
+		var ctx = canvas.getContext('2d');
+		var image = new Image();
+		image.src = 'my.jpg';
+		image.onload = function() {
+			ctx.drawImage(image, 0, 0, 640, 480);
+
+		};
+		console.log('first');
+		//////first_canvas 1 seconds later
+		var image3 = new Image();
+		image3.src = 'my.jpg';
+		setTimeout(function() {
+			ctx.drawImage(image3, 0, 0, 400, 480);
+			console.log('eee');
+		}, 1000);
+
+		///////////////////////2canvas////////////////////////////
+		var sprite_canvas = document.getElementById('2canvas');
+		var sprite_context = sprite_canvas.getContext('2d');
+		var image2 = new Image();
+		image2.src = 'my.jpg';
+		image2.onload = function() {
+			sprite_context.drawImage(image2, 40, 40, 100, 100);
+		};
+		console.log('second');
+
+	</script>
+</body>
+</html>

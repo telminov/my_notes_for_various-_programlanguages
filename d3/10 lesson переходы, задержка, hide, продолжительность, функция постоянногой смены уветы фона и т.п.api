@@ -1,0 +1,64 @@
+.transition()   - переход
+.duration(2000)  //продолжительность (н-р перемещения) 2с
+.delay(2000) - задержка перед действием
+
+d3.select("#end").each(show) // идет селект по id='end', показ элемента
+			each(hide)// скрывает
+d3.select("#intro").style("background-color", "red") //- задаем цвет заднему фону
+d3.select("#intro").style("font-family", "Helvetica") // а тут просто меняет стиль текса
+d3.select("#intro").style("color", "blue")
+
+
+.transition() //переход
+.delay(function(d, i) { //идет переход по 1-му объекту
+    return i * 100;    
+  })
+.duration(3000) //каждый объект доходит до места за 3с
+.attr("cy", "50%") //идет перемещение по y
+
+.attr("fill", "hsl(360, 100%, 50%)") //использование hsl цвета
+
+d3.selectAll("circle").transition().attr("cy", "50%")
+перемещение
+
+
+var recolor = function() { //вечная перераскаска
+  d3.select("rect")
+    .transition()
+    .duration(3000)
+    .attr("fill", "hsl(" + (Math.random() * 360) + ",100%,50%)")
+    .each("end", recolor);
+};
+recolor()
+
+
+d3.selectAll("circle")
+  .transition()
+  .duration(2000)  //продолжительность
+  .attr("cy", "0%")
+перемещие за 2 секунды  
+
+d3.selectAll("circle")
+  .transition()
+  .duration(1000)
+  .attr("fill", "red")
+
+меняет постепенно для каждого круга цвет
+
+
+d3.selectAll("circle")
+  .transition()
+  .delay(2000)
+  .duration(3000)
+  .attr("cy", "75%")
+идет задержка, потом перемещение
+
+
+d3.selectAll("circle")
+  .transition()
+  .delay(function(d, i) {
+    return i * 100;
+  })
+  .duration(3000)
+  .attr("cy", "50%")
+идет перемещение по 1-му объекту  благодаря

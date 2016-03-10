@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <meta name="robots" content="noindex, noarchive, nofollow" />
+
+        <script src="playground.js"></script>
+        <script src="consts.js"></script>
+        <script src="tower.js"></script>
+        <script src="bullet.js"></script>
+        <script src="enemy.js"></script>
+        <script src="game.js"></script>
+        <script src="player.js"></script>
+        <script src="sprite.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div id='playground' class="col-lg-6"></div>
+            <div class="col-lg-6">
+                <button class="btn btn-success" id="spawn">Спавн 1!</button>
+                <button class="btn btn-success" id="spawn2">Спавн 2!</button>
+                <div id="enemies"></div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            game = new Game({
+                lives: 1,
+                id: 1,
+                health: 1
+            });
+
+            playground = new Playground({
+                target: "playground",
+                tileSize: 32,
+                xTiles: 26,
+                yTiles: 16,
+                background: 'brick.png'
+            });
+
+            game.addPlayground(playground);
+
+            playground.init();
+
+            player = new Player({
+                gold: 100500,
+                nickname: 'hellobra',
+                id: 1
+            });
+
+            game.addPlayer(player);
+            game.currentPlayer = player;
+
+            player.addTower(new Tower({
+                cost: 1, tileX: 4, tileY: 5, radius: 90, damage: 3, game: game, speed: 1000, src: 'tower_sprite.jpg'
+            }));
+
+            player.addTower(new Tower({
+                cost: 1, tileX: 6, tileY: 6, radius: 90, damage: 5, game: game, speed: 1500, src: 'tower_sprite.jpg'
+            }));
+
+            player.addTower(new Tower({
+                cost: 1, tileX: 15, tileY: 3, radius: 100, damage: 6, game: game, speed: 2000, src: 'tower_sprite.jpg'
+            }));
+
+            var enemyDefaultOptions = {
+                src: 'monstersprite.png', health: 50, game: game,
+                path_points: waysConst["1"].map(function(coords){return [coords[0]*32, coords[1]*32]})
+            };
+
+            var enemy2DefaultOptions = {
+                src: 'monstersprite.png', health: 45, game: game,
+                path_points: waysConst["2"].map(function(coords){return [coords[0]*32, coords[1]*32]})
+            };
+
+            game.start();
+
+            document.getElementById('spawn').addEventListener('click', function(){
+                game.addEnemy(new Enemy(enemyDefaultOptions));
+            });
+
+            document.getElementById('spawn2').addEventListener('click', function(){
+                game.addEnemy(new Enemy(enemy2DefaultOptions));
+            });
+
+        </script>
+    </body>
+</html>

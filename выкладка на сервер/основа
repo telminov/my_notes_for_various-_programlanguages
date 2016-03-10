@@ -1,0 +1,10 @@
+
+файл wsgi
+/var/www/nick1994209_pythonanywhere_com_wsgi.py
+
+virtualenv
+/home/nick1994209/.virtualenvs/karate
+
+НЕ ЗАБУДЬ !
+STATIC_ROOT = os.path.join(BASE_DIR, 'static') #TODO на серве нужно прописать типо /home/nick1994209/karate_site/static в джанге
+

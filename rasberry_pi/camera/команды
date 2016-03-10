@@ -1,0 +1,5 @@
+raspistill
+
+raspistill -o image.jpg
+
+raspivid -o testvideo.h264 -t 10000

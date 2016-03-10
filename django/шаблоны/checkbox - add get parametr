@@ -1,0 +1,20 @@
+ <h4>Выезд - не выезд  <input {% if 'clicked_checkbox' in request.GET %} checked {% endif %}type="checkbox" onclick='check_url()'/></h4>
+
+            <script>
+                function check_url() {
+                     var url = window.location.href ;
+                    if (url.indexOf('clicked_checkbox')  != -1 ){
+                        console.log(123);
+                        url = url;
+                        var url = url.substring(0,url.indexOf('clicked_checkbox') -1);
+                        console.log(url);
+                    }
+                    else {
+
+                        if (url.indexOf('out_type')  != -1){
+                            url = url + '&clicked_checkbox=True'
+                        }
+                    }
+                    document.location.href = url;
+                }
+            </script>

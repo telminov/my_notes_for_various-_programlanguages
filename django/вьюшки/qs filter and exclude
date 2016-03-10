@@ -1,0 +1,2 @@
+        orders_qs = orders_qs.exclude(lmk_order__isnull=True, prof_order__isnull=True)
+

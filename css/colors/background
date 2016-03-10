@@ -1,0 +1,27 @@
+body {
+    background-color: yellow;
+}
+
+h1 {
+    background-color: #00ff00;
+}
+
+//  <p>
+p {
+    background-color: rgb(255,0,255);
+}
+
+<id="backgound">
+#backgound
+
+///////////////////////////картинка
+
+body  {
+    background-image: url("paper.gif");
+    background-color: #cccccc;
+}
+background-image: url("img_tree.gif"), url("img_flwr.gif");
+
+
+
+

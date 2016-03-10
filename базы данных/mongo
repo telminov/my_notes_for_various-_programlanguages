@@ -1,0 +1,33 @@
+Вход:
+mongo
+
+http://metanit.com/nosql/mongodb/2.2.php
+
+use *      *-название бд
+show dbs   - просмотр всех бд
+db - просмотр бд с которой сейчас работаю
+db.stats()   статистика по бд
+
+Похожим образом мы можем узнать всю статистику по отдельной коллекции. Например, узнаем статистику по коллекции users: db.users.stats()
+
+db.users.find()   чтобы извлечь все документы из коллекции users
+db.users.find({name: "Tom"})
+
+ db.users.renameCollection("новое_название") - переименовывание коллекции
+ db.createCollection("accounts") -  создаем коллекцию
+
+db.users.count() - число элементов в коллекции
+
+show collections - просмотр коллекций
+
+db.prof_log.insert({"name": "Tom", "age": 28, languages: ["english", "spanish"]})
+создание
+
+> db.users.find()
+db.createCollection("accounts")
+
+document=({"name": "Bill", "age": 32, languages: ["english", "french"]})
+> db.users.insert(document)
+
+
+

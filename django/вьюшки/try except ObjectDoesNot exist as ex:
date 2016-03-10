@@ -1,0 +1,4 @@
+    try:
+        org = models.Organization.objects.get(id=org_id)
+        c['org'] = org
+    except ObjectDoesNotExist as ex:

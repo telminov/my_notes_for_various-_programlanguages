@@ -1,0 +1,27 @@
+import pickle
+obj = SomeObject()
+f = open(filename,’wb’)
+pickle.dump(obj, f)
+f.close()
+
+# Сохранит объект в f
+Следующий фрагмент восстанавливает объект:
+import pickle
+f = open(filename,’rb’)
+obj = pickle.load(f)
+f.close()
+
+
+////////////////
+
+import shelve
+obj = SomeObject()
+db = shelve.open(“filename”)
+db[‘key’] = obj
+...
+obj = db[‘key’]
+db.close()
+# Открыть хранилище
+# Сохранить объект в хранилище
+# Извлечь объект
+# Закрыть хранилище

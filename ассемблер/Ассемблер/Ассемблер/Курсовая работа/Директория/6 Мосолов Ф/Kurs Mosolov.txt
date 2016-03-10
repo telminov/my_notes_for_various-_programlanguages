@@ -1,0 +1,35 @@
+DOT PROC NEAR
+	MOV DL,'.'	; бШБНД РНВЙХ
+	MOV AH,2
+	INT 21H
+DOT ENDP
+
+symbol PROC NEAR	; бшбнд рнвйх оняке 'U+яхлбнк'
+ MOV AH,03H		; ядбхц йспянпю мю
+ INT 10H		; яхлбнк оепед опедшдсыхл
+ DEC DL			; х гюохяэ опедшдсыецн яхлбнкю б AL
+ DEC DL
+ MOV AH,02H
+ INT 10H
+ MOV AH,08H
+ INT 10H
+ INC DL
+ INC DL
+ CMP AL,'U'		; яхлбнк оепед опедшдсыхл 'U'?
+ JNZ BACK		; мер - бнгбпюр
+
+ PUSH CX
+ CALL DOT
+ POP CX
+
+ MOV AH,02H		; бнгбпюыемхе йспянпю
+ INT 10H
+ JMP BACK1
+ BACK:
+  MOV AH,02H		; бнгбпюыемхе йспянпю
+  INT 10H
+  MOV AL,0 
+  MOV SAV,AL
+ BACK1:
+  RET
+symbol ENDP

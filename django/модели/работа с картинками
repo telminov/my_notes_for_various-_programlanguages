@@ -1,0 +1,23 @@
+
+class Tile(models.Model):
+    image = models.ImageField(verbose_name='Картинка', upload_to='image-files/')
+    tile_album = models.ForeignKey(Tile_album, related_name='tiles') #TODO мб добавить групповые картинки
+
+    def save(self, *args, **kwargs):    #определяем место сохранения
+        for field in self._meta.fields:
+            if field.name == 'image':
+                field.upload_to = 'tiles/%d/%d/' % self.user.id, self.tile_album.id
+        super(Tile, self).save()
+
+    def delete(self, *args, **kwargs):    #не забываем удалять за собой картинки
+        if self.photos:
+            for photo in self.photos.all():
+                photo.delete()
+        storage, path = self.image.storage, self.image.path
+        super(Tile, self).delete(*args, **kwargs)
+        storage.delete(path)
+
+    class Meta:
+        verbose_name = 'Тайл'
+        verbose_name_plural = 'Тайлы'
+

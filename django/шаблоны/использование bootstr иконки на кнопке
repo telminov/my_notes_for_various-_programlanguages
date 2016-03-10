@@ -1,0 +1,5 @@
+ <button type="submit"  name="not_presence" 	value='{{ s_and_s.os.service.name_en }}_' class="btn btn-small pull-right">
+     <i class="icon-question"></i>
+         Поставить неявку
+ </button>
+

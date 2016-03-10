@@ -1,0 +1,57 @@
+<html>
+    <head></head>
+    <body>
+
+    <script src="jquery-1.12.0.min.js"></script>
+    <script type="text/javascript">
+    var ws;
+    var addr="ws://127.0.0.1:9000";
+    $(document).ready(function (){
+            connectWS();
+    });
+    function dbg(m){
+            console.log(m);
+    }
+    function connectWS(){
+            dbg('Connected...');
+            if (window.WebSocket) {
+                    ws = new WebSocket(addr);
+            }
+            else if (window.MozWebSocket) {
+                    ws = MozWebSocket(addr);
+            }
+            else {
+                    alert('You browser cant find WebSocket.');
+                    dbg(' WebSocket not worked');
+                    return;
+            }
+
+            /* событие закрытия соединения */
+            ws.onclose=function(){
+                    dbg('Connected closed.');
+                    reconnect=setTimeout(connectWS,6000); //попытка 
+                                                          //установки повторного соединения
+                                                          //через каждые 6 секунд.
+            }
+
+            /* событие установки соединения */
+            ws.onopen=function(){
+                    dbg('All Fire. Connected worked!');
+                    ws.send('Meesage to server');
+            }
+
+            /* событие ошибки сокета */
+            ws.onerror=function(e){
+                    dbg("Error socket: " + e.data);
+            }
+
+            /* событие приема сообщения */
+            ws.onmessage = function (evt) {
+                    dbg(evt.data);
+                    //здесь следует добавить код для обработки входящих сообщений.
+            }
+            return 0;
+    }
+    </script>
+    </body>
+</html>

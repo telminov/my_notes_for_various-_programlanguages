@@ -1,0 +1,15 @@
+from django.utils import simplejson
+
+
+def view(request, …):
+    js_data = simplejson.dumps(my_dict)
+    …
+    render_template_to_response("my_template.html", {"my_data": js_data, …})
+
+
+In the template:
+
+<script type="text/javascript">
+    data_from_django = {{ my_data }};
+    widget.init(data_from_django);
+</script>

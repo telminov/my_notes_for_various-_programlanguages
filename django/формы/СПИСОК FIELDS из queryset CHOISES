@@ -1,0 +1,32 @@
+class LogginFormUrl(RequestLoggingForm):
+    url = forms.ChoiceField(
+        label=u'Url',
+        required=True,
+        choices=[(x,x) for x in set(RequestLog.objects.values_list('url'))]
+        widget=forms.Select(attrs={'style': 'width:auto'}
+#добавлен виджет для автоматичского увеличения поля урла (если он оч большой)
+    )
+------------------------------
+class LogginFormUser(DateTimeForm):
+
+    username = forms.ChoiceField(
+        label=u'Логин пользователя',
+        required=False, #TODO уточнить
+        choices=[(x,x) for x in set(RequestLog.objects.values_list('user__username'))]
+    )
+
+
+class LogginFormUrl(LogginFormUser):
+    url = forms.ChoiceField(
+        label=u'Url',
+        required=True,
+        choices=[(x,x) for x in set(RequestLog.objects.values_list('url'))]
+    )
+
+
+---------------------------------------------------------------------------
+лучший
+USER_CHOICES = tuple([('', '')] + [(user.username, user.username) for user in User.objects.all()])
+    d_from = forms.DateField(label=u'С числа', required=True, widget=DATE_PICKER)
+    d_to = forms.DateField(label=u'По число', required=True, widget=DATE_PICKER)
+    username = forms.ChoiceField(label=u'Логин пользователя', required=False, choices=USER_CHOICES)

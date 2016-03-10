@@ -1,0 +1,36 @@
+npm install -g coffee-script
+npm install --save coffee-script
+
+
+-c, --compile	Compile a .coffee script into a .js JavaScript file of the same name.
+-m, --map	Generate source maps alongside the compiled JavaScript files. Adds sourceMappingURL directives to the JavaScript as well.
+-i, --interactive	Launch an interactive CoffeeScript session to try short snippets. Identical to calling coffee with no arguments.
+-o, --output [DIR]	Write out all compiled JavaScript files into the specified directory. Use in conjunction with --compile or --watch.
+-j, --join [FILE]	Before compiling, concatenate all scripts together in the order they were passed, and write them into the specified file. Useful for building large projects.
+-w, --watch	Watch files for changes, rerunning the specified command when any file is updated.
+-p, --print	Instead of writing out the JavaScript as a file, print it directly to stdout.
+-s, --stdio	Pipe in CoffeeScript to STDIN and get back JavaScript over STDOUT. Good for use with processes written in other languages. An example:
+cat src/cake.coffee | coffee -sc
+-l, --literate	Parses the code as Literate CoffeeScript. You only need to specify this when passing in code directly over stdio, or using some sort of extension-less file name.
+-e, --eval	Compile and print a little snippet of CoffeeScript directly from the command line. For example:
+coffee -e "console.log num for num in [10..1]"
+-b, --bare	Compile the JavaScript without the top-level function safety wrapper.
+-t, --tokens	Instead of parsing the CoffeeScript, just lex it, and print out the token stream: [IDENTIFIER square] [ASSIGN =] [PARAM_START (] ...
+-n, --nodes	Instead of compiling the CoffeeScript, just lex and parse it, and print out the parse tree:
+
+Examples:
+
+Compile a directory tree of .coffee files in src into a parallel tree of .js files in lib: -------------__~!-
+	coffee --compile --output lib/ src/
+Watch a file for changes, and recompile it every time the file is saved: -----------------------
+	coffee --watch --compile experimental.coffee
+Concatenate a list of files into a single script:   ---------------__!!!!!!!!!!-----__
+	coffee --join project.js --compile src/*.coffee
+Print out the compiled JS from a one-liner:
+	coffee -bpe "alert i for i in [0..10]"
+All together now, watch and recompile an entire project as you work on it:
+	coffee -o lib/ -cw src/
+Start the CoffeeScript REPL (Ctrl-D to exit, Ctrl-Vfor multi-line):
+	coffee
+
+

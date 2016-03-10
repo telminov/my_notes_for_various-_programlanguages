@@ -1,0 +1,12 @@
+sudo apt-get install npm
+
+npm install
+
+sudo  npm install gulp -g
+sudo  npm install bowler -g
+(in frontend)
+  npm install
+
+  bower install
+  gulp  build
+

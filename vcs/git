@@ -1,0 +1,34 @@
+
+ssh-keygen    (пароль любой. главное чтоб смог потом повторить для подтверждения гита)
+cat .ssh/id_rsa.pub     (наш парольчик, кидаем в ssh гита)
+
+-----------------------------------начальное---для самого начала
+git init
+git remote add origin git@bitbucket.org:nicking/example.git
+
+Create your first file, commit, and pushecho "Nick Korolkov" >> contributors.txt
+git add contributors.txt
+git commit -m 'Initial commit with contributors'   #коммит не оч лучше использовать  -am
+
+git push -u origin master
+git push origin master    (origin - кто вы, master - ветка)
+
+(если ошибка - возможно в гите уже лежат какие то файлы - спулься   git pull)
+------------------------------
+git add -A    -добавляет все файлы (кроме гитигнора)
+git commit -am 'ура я хочу коммитить'
+git push    (или в зависимости от ветки  git push -u origin master)  закидываем на гит
+
+
+git pull  собираем с гита
+
+git config --global user.email "nick1994209@yandex.ru"
+git config --global user.name "nick1994209" 
+git status
+
+git commit --amend    изменение сообщения ласт коммитом
+
+------------------------------------------только в плохих случаях----
+git merge      
+git stash - отмена изменений до отката последнего пуша
+

@@ -1,0 +1,20 @@
+border-width	Specifies the width of the border. Default value is "medium"
+border-style	Specifies the style of the border. Default value is "none"
+border-color	Specifies the color of the border. Default value is the color of the element
+initial	Sets this property to its default value. Read about initial
+inherit	Inherits this property from its parent element. Read about inherit
+
+p {
+    border: 5px solid red;
+}
+
+
+p  {
+    border-style: solid; //обычный черный
+    border-bottom:  #ff0000; // так я убираю снизу линию #ff0000-любое значение (можно сверху линию)
+
+    border-top-bottom-color: #ff0000;  //цвет линии topa
+}
+
+
+

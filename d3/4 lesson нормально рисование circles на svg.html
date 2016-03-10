@@ -1,0 +1,50 @@
+<html lang="en"><head>
+		<meta charset="utf-8">
+		<title>D3 Demo: SVG with data</title>
+		<script type="text/javascript" src="d3/d3.v3.min.js"></script>
+		<style type="text/css">
+			/* No style rules here yet */		
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			//Width and height
+			var w = 500;
+			var h = 50;
+			
+			//Data
+			var dataset = [ 5, 10, 15, 20, 25 ];
+			
+			//Create SVG element
+			var svg = d3.select("body") //всегда сперва создаем ссылку на наш полученные свг, чтоб не искать его каждый раз
+						.append("svg")
+						.attr("width", 500)
+						.attr("height", 50);
+
+			var circles = svg.selectAll("circle") //так же как и с свг, получаем ссылку круга, enterom создаем его
+			    .data(dataset)
+			    .enter()
+			    .append("circle");
+			  // задаем кругам их атрибуты
+			circles.attr("cx", function(d, i) { //так всегда нужно для получения index-а итерации
+						return (i * 50) + 25;
+					})
+				   .attr("cy", h/2) // h - мы прописали выше - высота канваса
+				   .attr("r", function(d) { //ну и радиус получаем как обычно
+						return d;
+					})
+
+						// ну и добавим немного красивости (цвета)
+					.attr("fill", "yellow")
+					.attr("stroke", "orange")
+					.attr("stroke-width", function(d) {
+					    return d/5;
+					});
+
+
+		</script>
+		<!-- и вот тут меня озадачело, вы че? нужно создавать самому это все???? -->
+		<svg width="500" height="50"><circle cx="25" cy="25" r="5"></circle><circle cx="75" cy="25" r="10"></circle><circle cx="125" cy="25" r="15"></circle><circle cx="175" cy="25" r="20"></circle><circle cx="225" cy="25" r="25"></circle></svg>
+	
+</body></html>

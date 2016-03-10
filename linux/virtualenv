@@ -1,0 +1,34 @@
+
+###########чтоб запускать можно было##############
+записать в ~/.bashrc  и  ~/.zshrcе
+
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/local/bin/virtualenvwrapper.sh
+
+если будет ошибка то - либо установить через apt-get install virtualenvwrapper
+либо через sudo pip virtualenvwrapper
+###############как работать с вирт окружением ####################
+mkvirtualenv * - создаем вирт окружение *   (напитоне 2.7)
+или 
+virtualenv --no-site-packages --distribute -p /usr/bin/python3.4 ~/.virtualenvs/*    (создаем вирт окружение на питоне 3.4 )
+al
+deactivate   -выходим из него
+workon *  - заходим
+ ну и pipом устанавливаем пакетики
+
+##############python3.5################
+download archive python3.5*  или 3.4.4
+unpack
+cd python3.5*
+./configure
+sudo make 
+sudo make install
+#############zmq install######
+sudo pip uninstall pyzmq
+sudo pip install pyzmq
+but it didn't work. Finally, I solve the problem by
+
+sudo pip install --upgrade pyzmq
+#######################################
+

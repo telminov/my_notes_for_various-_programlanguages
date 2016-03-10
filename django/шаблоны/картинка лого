@@ -1,0 +1,6 @@
+<!doctype html>
+<html lang="en" ng-app="arduinoBattle">
+    <head>
+        <meta charset="utf-8">
+        <link rel="icon" href="img/fav.ico">
+...

@@ -1,0 +1,11 @@
+.gallery img{
+             /* внешние отступы картинок */
+                margin:5px;
+             /* рамка картинок */
+                border:2px solid #ffffff;
+            }
+
+            a.photo:hover img{
+             /* изменение цвета рамки при наведении на картинку */
+                border:2px solid #7e5a25;
+            }

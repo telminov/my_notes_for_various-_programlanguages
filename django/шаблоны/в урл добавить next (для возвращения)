@@ -1,0 +1,7 @@
+<a href="/lmk/order/{{ lmk_order }}/?next={{ current_url }}"><h2>ЛМК</h2></a>
+
+где {{ curent_url }}
+
+в views 
+        c['current_url'] = request.path
+

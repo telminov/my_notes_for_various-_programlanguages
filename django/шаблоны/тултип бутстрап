@@ -1,0 +1,41 @@
+делает красивые кнопочки справа
+
+ <div class="span3 pull-right">
+                        <script>
+                            $(document).ready(function () {
+                                $('#notedit').tooltip();
+                            });
+                        </script>
+                        {% if button_edit %}
+                            {% if prof_order%}
+                            <a class="btn btn-block btn-green" href="/prof/input/order/{{ prof_order }}/">
+                                Изменить
+                            </a>
+                            {% else %}
+                            <a class="btn btn-block btn-green" href="/lmk/order/{{ lmk_order }}">
+                                Изменить
+                            </a>
+                                {% endif %}
+                        {% else %}
+                            <a id="notedit" data-toggle="tooltip" title="Не достаточно прав"
+                               class="btn btn-block btn-grey ">
+                                Изменить
+                            </a>
+                        {% endif %}
+                    </div>
+
+
+
+ или 
+
+ 
+ <button id="has_not_edit"  title="Недостаточно прав" class='btn btn-block btn-grey pull-right'
+	type="submit">
+	Осмотр завершен
+ </button>
+
+ <script type="text/javascript">
+    $(document).ready(function () {
+    $('#has_not_edit').tooltip();
+});
+</script>

@@ -1,0 +1,21 @@
+{% extends 'mobil/base_report.html' %}
+
+{% block table_content %}
+    <a class="btn btn-block btn-blue" href="{%  url 'mobil.views.report.logging_for_username_graf' user_id %}">
+        Гистограмма по пользователю </a>
+        <tr>
+            <td>Пользователь</td>
+            <td>Дата создания</td>
+            <td>url</td>
+            <td>ip</td>
+        </tr>
+        {% for obj in object_list %}
+        <tr>
+            <td>{{ obj.user }}</td>
+            <td>{{ obj.dc }}</td>
+            <td>{{ obj.url }}</td>
+            <td>{{ obj.user.ip }}</td>
+        </tr>
+        {% endfor %}
+
+{% endblock table_content %}

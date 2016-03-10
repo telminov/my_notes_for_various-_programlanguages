@@ -1,0 +1,8 @@
+login_required(redirect_field_name='next', login_url=None)[source]¶
+As a shortcut, you can use the convenient login_required() decorator:
+
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def my_view(request):
+    ...

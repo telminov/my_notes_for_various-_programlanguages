@@ -1,0 +1,22 @@
+class PriceServiceEdit(forms.ModelForm):
+    price = forms.CharField(widget=forms.HiddenInput)
+
+    class Meta:
+        model = models.PriceService
+        fields = ('price', 'service', 'cost')
+
+    def clean_price(self):
+        price_id = self.cleaned_data['price']
+        price = models.Price.standard_objects.get(id=price_id)
+        return price
+
+
+и в функции:
+
+    def get_initial(self):
+        initial = super(UpdatePriceService, self).get_initial()
+        initial['price'] = self.kwargs.get('price_id')
+        return initial
+
+или , если классБейс
+то тупо передать туда 

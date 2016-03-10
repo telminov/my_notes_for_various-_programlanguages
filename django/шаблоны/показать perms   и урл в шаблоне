@@ -1,0 +1,26 @@
+{% if perms.prof.administrator_confirm_edit %}
+<a href=" тут его ты получаешь /?next={{ request.path }}"><h2> ОЙляля</h2></a>
+
+о даааа, именно оно))) а я не круто использовал 
+In the {{ perms }} object, single-attribute lookup is a proxy to User.has_module_perms. This example would display True if the logged-in user had any permissions in the foo app:
+
+{{ perms.foo }}
+
+{% if perms.foo %}
+    <p>You have permission to do something in the foo app.</p>
+    {% if perms.foo.can_vote %}
+        <p>You can vote!</p>
+    {% endif %}
+    {% if perms.foo.can_drive %}
+        <p>You can drive!</p>
+    {% endif %}
+{% else %}
+    <p>You don't have permission to do anything in the foo app.</p>
+{% endif %}
+
+или 
+{% if 'foo' in perms %}
+    {% if 'foo.can_vote' in perms %}
+        <p>In lookup works, too.</p>
+    {% endif %}
+{% endif %}

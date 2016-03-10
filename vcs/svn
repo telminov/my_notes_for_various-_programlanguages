@@ -1,0 +1,23 @@
+   svn cp svn+ssh://neo.soft-way.biz/var/svn_neo/mis_mm/trunk/ svn+ssh://neo.soft-way.biz/var/svn_neo/mis_mm/branches/2528 -m 're #2528 - копия в branch"'     ///создание бранча
+   cd ..
+   cd branches/
+ svn co svn+ssh://neo.soft-way.biz/var/svn_neo/mis_mm/branches/2528 2528 
+ ////копия
+
+(env)nicking@nicking ~/svn/mis_mm/branches/2719.1 $ svn merge svn+ssh://neo.soft-way.biz/var/svn_neo/mis_mm/branches/2719
+  - merge ветки
+
+удаление ветки
+ svn rm svn+ssh://neo.soft-way.biz/var/svn_neo/mis_mm/branches/2528 -m 're #2528 - удаляю ветку, чтобы потом заново скопировать trunk'
+   rm 2528 -rf - удаляет все файлы, не прося разрешения
+  svn info
+   ls
+   cd ../trunk/
+   
+svn ci -m "re #94 - слили ветку" 
+- коммит-пуш
+
+svn sw svn+ssh://neo.soft-way.biz/var/svn_neo/mis_mm/branches/2610 переключение
+
+svn up ////// #2262 (если нужно еще ветку можно добавить по которой обновляться )
+обновит всю директорию

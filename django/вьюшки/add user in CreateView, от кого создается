@@ -1,0 +1,25 @@
+НИЖЕ ФОРМА
+
+Чтобы отслеживать пользователя, создавшего некий объект с помощью CreateView, вы можете использовать пользовательский класс ModelForm. Первое, добавьте внешний ключ (foreign key) к модели:
+
+models.py
+from django.contrib.auth.models import User
+from django.db import models
+
+class Author(models.Model):
+    name = models.CharField(max_length=200)
+    created_by = models.ForeignKey(User)
+
+В представлении удостоверьтесь, что вы не включаете created_by в список редактируемых полей и переопределите метод form_valid() для добавления пользователя:
+
+views.py
+from django.views.generic.edit import CreateView
+from myapp.models import Author
+
+class AuthorCreate(CreateView):
+    model = Author
+    fields = ['name']
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super(AuthorCreate, self).form_valid(form)

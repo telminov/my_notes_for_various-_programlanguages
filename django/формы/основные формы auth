@@ -1,0 +1,26 @@
+AdminPasswordChangeForm
+
+AuthenticationForm
+прикольные функции в подклассе
+class PickyAuthenticationForm(AuthenticationForm):
+    def confirm_login_allowed(self, user):
+        if not user.is_active:
+            raise forms.ValidationError(
+                _("This account is inactive."),
+                code='inactive',
+            )
+        if user.username.startswith('b'):
+            raise forms.ValidationError(
+                _("Sorry, accounts starting with 'b' aren't welcome here."),
+                code='no_b_users',
+            )
+
+PasswordChangeForm
+
+PasswordResetForm
+
+class UserChangeForm[source]¶
+A form used in the admin interface to change a user’s information and permissions.
+
+class UserCreationForm[source]¶
+A form for creating a new user.

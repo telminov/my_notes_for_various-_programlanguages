@@ -1,0 +1,61 @@
+<!-- Метод attr() используется для установки элементу атрибута и его значения. HTML-атрибутом является любая пара свойство/значение, которые можно включать для элемента между скобками <>. Например, эти HTML-элементы:
+-->
+
+<!-- получиться квадрат,  в диве с классом bar 
+var dataset = [ 5, 10, 15, 20, 25 ];
+ 
+d3.select("body").selectAll("div")
+    .data(dataset)
+    .enter()
+    .append("div")
+    .attr("class", "bar");
+     
+
+нужно установить стили : для регулировки высоты столбцов
+<div style="height: 75px;"></div>
+
+.style("height", function(d) {
+    return d + "px"; 
+});
+     -->
+
+<html lang="en"><head>
+		<meta charset="utf-8">
+		<title>D3 Demo: 5-div bar chart</title>
+		<script type="text/javascript" src="../d3/d3.v3.min.js"></script>
+		<style type="text/css">
+		
+			div.bar {
+				display: inline-block;
+				width: 20px;
+				height: 75px;	/* Gets overriden by D3-assigned height below */
+				margin-right: 2px; /* нужно для  отступов между столбцами */
+				background-color: teal;
+			}
+		
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+		
+			var dataset = [ 5, 10, 45, 20, 60 ];
+			
+			d3.select("body").selectAll("div")
+				.data(dataset)
+				.enter()
+				.append("div")
+				.attr("class", "bar")
+				.style("height", function(d) {
+					var barHeight = d * 5;
+					return barHeight + "px";
+				});
+			 console.log(dataset);
+			
+		</script><div class="bar" style="height: 25px;"></div><div class="bar" style="height: 50px;"></div><div class="bar" style="height: 75px;"></div><div class="bar" style="height: 100px;"></div><div class="bar" style="height: 125px;"></div>
+	
+</body></html>
+
+<!-- РАНДОМЧИК
+var newNumber = Math.random() * 30;  - обычный рандомчик (числа с плавающей запятой)
+var newNumber = Math.round(Math.random() * 30); - целые числа 
+ -->

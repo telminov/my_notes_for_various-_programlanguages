@@ -1,0 +1,35 @@
+My пуль
+
+FF629D		up
+FFA857		down
+FF22DD		left
+FFC23D		right
+FF02FD		brake
+
+
+FF42BD		*
+FF4AB5		0
+FF52AD		#
+
+
+
+Сережин пульт
+FF18E7   2
+
+FF10EF   4
+
+FF5AA5    6
+
+FF4AB5    8
+
+FF38C7    5
+
+FFA857    vol+
+
+FFE01F  vol-
+
+D7E84B1B вперед (зеленная)
+
+FF22DD   назад (зеленная)
+
+

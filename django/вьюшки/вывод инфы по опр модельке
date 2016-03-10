@@ -1,0 +1,19 @@
+def get_fields_from_obj(obj, field_list):
+    '''
+        Метод для вывода инфы по конкретной модельке
+        параметры: obj - объект models.Model(), field_list - список полей, которые надо отобразить
+        вывод в формате [(verbos_name, value, field_name), ...] пример в crm.views.outs.plan_view
+    '''
+    v_names = dict([(o.name, o.verbose_name) for o in obj._meta.fields])
+    fields = []
+    for o in field_list:
+        if hasattr(obj, o): #если элемента нету, не наводитьшуму
+            field = obj._meta.get_field_by_name(o)[0]
+            if isinstance(field, models.BooleanField):
+                field = (v_names[o], u"Да" if getattr(obj, o) else u"Нет", o)
+            elif field.choices:
+                field = (v_names[o], getattr(obj,"get_%s_display" % o)(), o)
+            else:
+                field = (v_names[o], getattr(obj, o), o)
+            fields.append(field)
+    return fields

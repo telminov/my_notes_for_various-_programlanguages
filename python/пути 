@@ -1,0 +1,6 @@
+import sys
+sys.path.append(“mymodules.zip”)
+
+sys.path.append(“/tmp/modules.zip/lib/python”)
+
+

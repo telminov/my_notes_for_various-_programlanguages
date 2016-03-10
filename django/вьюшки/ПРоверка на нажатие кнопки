@@ -1,0 +1,21 @@
+if 'exams_done' in request.POST:
+
+ <button id="id_exams_done" class='btn btn-block btn-success pull-right'
+ 	type="submit" name="exams_done"
+		{% if not all_done %}disabled="disabled"{% endif %}>
+         Осмотр завершен
+ </button>
+
+name="exams_done" - тут эт штука важна
+
+
+
+или :
+в views
+if 'not_presence' in request.POST:
+ в template:
+ <button type="submit"  name="not_presence" 	value='{{ s_and_s.os.service.name_en }}_' class="btn btn-small pull-right">
+     <i class="icon-question"></i>
+         Поставить неявку
+ </button>
+

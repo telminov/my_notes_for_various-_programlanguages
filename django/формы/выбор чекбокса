@@ -1,0 +1,5 @@
+ DIFFERENCE_CHOICES = (
+        ('difference', u''),
+    )
+    difference = forms.MultipleChoiceField(required=False, label=u'Только различные',
+        widget=forms.CheckboxSelectMultiple, choices=DIFFERENCE_CHOICES)

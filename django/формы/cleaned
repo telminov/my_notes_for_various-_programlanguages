@@ -1,0 +1,16 @@
+class LogginForm(forms.Form):
+    USER_CHOICES = tuple([('', '')] + [(user.username, user.username) for user in User.objects.all()])
+    d_from = forms.DateField(label=u'С числа', required=True, widget=DATE_PICKER)
+    d_to = forms.DateField(label=u'По число', required=True, widget=DATE_PICKER)
+    username = forms.ChoiceField(label=u'Логин пользователя', required=False, choices=USER_CHOICES)
+
+    def clean(self):
+        cd = super(LogginForm, self).clean()
+        dc_from = cd.get("d_from")
+        dc_to = cd.get("d_to")
+        if not dc_from or not dc_to:
+            raise forms.ValidationError(u'Заполните поля даты')
+        if dc_from > dc_to:
+            self.add_error('dc_from', u'Должно быть меньше, чем "По число"')
+            self.add_error('dc_to', u'Должно быть больше, чем "С числа"')
+        return cd

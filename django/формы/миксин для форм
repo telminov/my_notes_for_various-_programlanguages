@@ -1,0 +1,51 @@
+# coding: utf-8
+from collections import OrderedDict
+import datetime
+from django import forms
+from django.conf import settings
+from django_select2 import AutoModelSelect2MultipleField, AutoModelSelect2Field, Select2MultipleChoiceField
+from mongoengine.connection import get_db
+
+import lib.forms
+import lib.widgets
+import prof.models
+import lmk.models
+from lib import widgets
+from mobil import models
+from mobil import models_mongo
+
+---------------------------САМ МИкСИМЧИК
+class CheckUniqueNameMixin(object):
+    unique_names = None   # нужно указать список уникальных имен, Например:  ('name', 'code', )
+
+    def clean(self, *args, **kwargs):
+        cleaned_data = super(CheckUniqueNameMixin, self).clean(*args, **kwargs)
+
+        for name in self.unique_names:
+            if name in cleaned_data:
+                value = cleaned_data.get(name)
+                qs = type(self.instance).standard_objects.filter(**{name : value})
+
+                if self.instance.id:
+                    qs = qs.exclude(id=self.instance.id)
+
+                if qs.exists():
+                    if qs[0].dd:
+                        msg = u'"%s" есть среди удаленных'
+                    else:
+                        msg = u'"%s" есть среди существующих'
+
+                    raise forms.ValidationError(msg % value)
+
+        return cleaned_data
+
+
+---------------------------ПРИМЕР
+
+class PriceEdit(mobil.forms.MultiOrgsModelForm, CheckUniqueNameMixin, forms.ModelForm):
+    unique_names = ('name',)
+
+    class Meta:
+        model = models.Price
+        fields = ('name', 'description', 'sort_priority', 'orgs')
+

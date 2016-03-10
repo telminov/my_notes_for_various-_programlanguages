@@ -1,0 +1,21 @@
+git clone git://github.com/amperka/ino.git
+cd ino/
+sudo make install
+установит в /usr/local/ino
+$ mkdir beep
+$ cd beep
+$ ino init -t blink
+$ заливаем скетч в src/sketch.ino
+$ ino build
+$ ino upload
+
+
+перед этим не забыть
+
+sudo apt-get install arduino | 
+sudo usermod -a -G tty pi
+sudo usermod -a -G dialout pi
+sudo apt-get install ttf-inconsolata 
+sudo apt-get install python-serial python3-serial
+
+где pi наш пользователь

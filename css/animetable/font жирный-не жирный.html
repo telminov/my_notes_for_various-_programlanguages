@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+#fontFatty {
+    border: 1px solid black;
+    width: 400px;
+    height: 100px;
+    -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+    animation: mymove 5s infinite;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes mymove {
+    50% {font-weight: bold;}
+}
+
+/* Standard syntax */
+@keyframes mymove {
+    50% {font-weight: bold;}
+}
+</style>
+</head>
+<body>
+
+<p>Gradually change the font-weight from normal to bold, and back to normal:<p>
+<div id="fontFatty">
+<p>This is a paragraph</p>
+</div>
+
+<p>The font-weight is <em>animatable</em> in CSS.</p>
+<p><b>Note:</b> CSS Animations do not work in Internet Explorer 9 and earlier versions.</p>
+
+</body>
+</html>

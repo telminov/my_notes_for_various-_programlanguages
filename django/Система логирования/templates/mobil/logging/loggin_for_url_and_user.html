@@ -1,0 +1,22 @@
+{% extends 'mobil/base_report.html' %}
+
+{% block form %}
+{% endblock %}
+
+{% block table_content %}
+    {{ url }}
+    <br>
+    <tr>
+        <td>Пользователь</td>
+        <td>Дата создания</td>
+        <td>ip</td>
+    </tr>
+    {% for obj in object_list %}
+    <tr>
+        <td><a href='{% url 'mobil.views.report.logging_for_username' obj.user.id %}'>{{ obj.user }}</a></td>
+        <td>{{ obj.dc }}</td>
+        <td>{{ obj.user.ip }}</td>
+    </tr>
+    {% endfor %}
+
+{% endblock table_content %}

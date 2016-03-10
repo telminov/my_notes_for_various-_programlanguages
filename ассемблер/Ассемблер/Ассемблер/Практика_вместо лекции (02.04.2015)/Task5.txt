@@ -1,0 +1,107 @@
+Assume  CS: Code, DS: Code
+Code 	SEGMENT
+	org 	100h
+	.286
+Start 	proc 	near
+	mov 	ax,cs
+	mov 	ds,ax
+	jmp 	beg
+pausa 		equ 	255
+frequency 		dw 	1000h
+iniflag 		db 	0 		; Флаг звучания
+old_int1c_off 	dw 	0 	; Смещение старого вектора
+old_int1c_seg 	dw 	0 	; Сегмент старого вектора
+tek_mel 		dw 	?
+duration 		db 	0 	; Длительность текущей ноты
+beg:	mov 	ax,351ch 	; Сохранение старого вектора 1c
+	int 	21h
+	mov 	cs:old_int1c_off,bx 	; Запись смещения
+	mov 	cs:old_int1c_seg,es 	; Запись сегмента
+	lea 	dx,new_int1c 		; Запись нового вектора 1c
+	mov 	ah,25h 		; Функция установки вектора прерыв.
+	mov 	al,1ch			; Номер вектора прерывания
+	int 	21h 		; DS:DX - адрес новой программы обр.
+beg1: call 	kbin 		; Опрос клавиатуры
+	mov 	byte ptr duration,1
+	cmp 	al,'1' 		; = '1' ?
+	jnz 	beg2 		; Нет
+	mov 	byte ptr iniflag,1 	; Взведение флага звуч.
+	lea 	ax,mel1
+	mov 	tek_mel,ax
+	jmp 	beg1 			; Переход на начало цикла
+beg2: cmp 	al,'2'	 	; = '2' ?
+	jnz 	beg3 		; Нет
+	mov 	byte ptr iniflag,1 	; Сброс флага звуч.
+	lea 	ax,mel2
+	mov 	tek_mel,ax
+	jmp 	beg1 		; Переход на начало цикла
+beg3: cmp 	al,'q' 		; = 'q' ?
+	jnz 	beg1 		; Нет
+; Восстановление старого вектора 1с и выход
+	mov 	dx,old_int1c_off 	; Смещение старого вектора
+	mov 	ax,old_int1c_seg 	; Сегмент старого вектора
+	mov 	ds,ax 			; DS:DX - адрес устанавл. вектора
+	mov 	ax,251ch 		; Установка старого вектора 1ch
+	int 	21h
+	int 	20h
+start 	endp
+; Новый обработчик прерывания 1ch
+new_int1c 	proc 	far
+		pusha
+		dec 	byte ptr cs:duration
+		jnz	 ex
+		call	 muz 	; Вызов процедуры извлечения звука
+ex: 		popa
+		iret
+new_int1c 	endp
+muz 	proc 	near
+	test 	byte ptr cs:iniflag,0ffh 	; Проверка флага
+	jnz 	muz1 			; Продолжение
+muze: in 	al,61h 	; Чтение состояния системного порта В
+	and 	al,0fch 	; Запрещение звучания (биты 0 и 1)
+	out 	61h,al 	; Запись в системный порт В
+	ret 			; Выход, если флаг не взведен
+muz1: mov 	si,cs:tek_mel 	; Адрес текущей ноты
+	mov 	bx,word ptr cs:[si] 	; BL -текущая нота, BH - длительность
+	mov 	cs:duration,bh 	; Длит. в системную переменную
+	cmp 	bl,255 	; Пауза ?
+	jnz 	muz2
+; Выключение звука
+	in 	al,61h 	; Чтение состояния системного порта В
+	and 	al,0fch 	; Запрещение звучания (биты 0 и 1)
+	out 	61h,al 	; Запись в системный порт В
+	inc 	cs:tek_mel 	; Переход к адресу след. ноты
+	inc 	cs:tek_mel 	; след. длительности
+	ret
+muz2: or 	bl,bl 		; = 0 ?
+	jnz 	muz3 	; Продолжение
+	jmp 	muze 	; Выход, если признак конца
+muz3: shl 	bl,1 		; Умножение bl на 2
+	xor 	bh,bh 	; bh = 0
+	mov 	ax,cs:noty[bx] 	; В DI частота ноты
+; Программирование делителя частоты 2 канала
+	inc 	cs:tek_mel 	; Переход к адресу след. ноты
+	inc 	cs:tek_mel ; и след. длительности
+	out 	42h,al 	; Мл.байт частоты?? канал 2 таймера
+	xchg	al,ah 		; AH?? AL
+	out 	42h,al 	; Ст.байт частоты ? канал 2 таймера
+; Разрешение звучания
+	in 	al,61h 	; Чтение состояния системного порта В
+	or 	al,3 		; Разрешение звучания (биты 0 и 1)
+	out	61h,al 	; Запись в системный порт В
+	ret 			; Нормальный выход
+muz 	endp
+kbin 	proc 	near 		; Ввод с клавиатуры
+; Процедура совпадает с одноименной в задаче 2.4.2.1.
+kbin 	endp
+mel1 	db 	17,2,255,1,13,2,255,1,17,2,255,1,13,2,255,1,18,2,255,1, 17,2
+	db 	255,1,15,4,255,2, 8,2,255,1,8,2,255,1,8,2,255,1,10,1,255,1
+	db 	12,1,255,1,13,2,255,1,13,2,255,1,13,4,0
+mel2	db 	1,4,4,4,8,4,4,4,6,8,4,4,3,4,8,8,6,8,1,12,0
+noty 	dw 	0eeeh,0e18h,0d49h,0c8eh,0bdfh,0b2fh,0abeh, 9f7h,968h
+	dw 	8e0h,861h,7e8h,777h,70ch,6a5h,647h, 5edh,597h,547h
+ 	dw 	4fbh,4b4h,470h,430h,3f4h, 3bbh,386h,352h,323h,2f6h,2cbh
+ 	dw 	2a3h,27dh,25ah,238h,218h,1fah, 1ddh,1c3h,1a9h,192h,17bh
+ 	dw 	166h,152h,13fh,12dh,11ch,10ch,0fdh,0
+code 	ends
+ 	END 	Start

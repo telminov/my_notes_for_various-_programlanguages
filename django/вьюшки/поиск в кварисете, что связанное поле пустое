@@ -1,0 +1,1 @@
+queryset = models.LabServiceGroup.objects.filter(main_group__isnull=True)

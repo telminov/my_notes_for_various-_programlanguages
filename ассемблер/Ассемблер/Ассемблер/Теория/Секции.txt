@@ -1,0 +1,2 @@
+http://www.tutorialspoint.com/assembly_programming/assembly_basic_syntax.htm
+https://sourceware.org/binutils/docs-2.21/as/Section.html

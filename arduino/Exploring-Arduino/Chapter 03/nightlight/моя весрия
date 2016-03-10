@@ -1,0 +1,25 @@
+const int RED = 11;
+const int GREEN = 10; 
+
+
+const int LIGHT = 0; //датчик освещения - его не нужно задавать, он по дефолту как списывающий в темноте 200кОм а при свете до 0const int MinLower = 200; //пороги макс-мин датчика освещ
+const int MaxLower = 900; //почти 4.8 V
+const int MinLower = 200; //наверное около 0.5 V
+
+int val = 0;
+
+void setup() {
+  pinMode(RED, OUTPUT);
+  pinMode(GREEN, OUTPUT);
+}
+
+void loop() {
+  val = analogRead(LIGHT); //будет от 0-1023
+  
+  //а передача в аналоговый должна от 0-255 для увелич-уменьш интенсивности светодиода
+  val = map(val, MinLower, MaxLower, 255, 0);//функция переводит диапозон с 200-900 в 255-0
+  val = constrain(val, 0 , 255); //ограничение границ (если больше 255 - то val = 255)
+  
+  analogWrite(RED, val);
+  digitalWrite(GREEN, HIGH);
+}

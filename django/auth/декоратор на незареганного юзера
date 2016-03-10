@@ -1,0 +1,28 @@
+используйка это в урлах для перелогина:
+from django.contrib.auth import views as auth_views
+
+url(r'^accounts/login/$', auth_views.login),
+
+использование самого декоратора
+from django.contrib.auth.decorators import login_required
+
+@login_required(login_url='/accounts/login/')
+def my_view(request):
+    ...
+
+создание своего декоратора:
+from django.contrib.auth.decorators import user_passes_test
+
+def email_check(user):
+    return user.email.endswith('@example.com')
+
+@user_passes_test(email_check)
+def my_view(request):
+    ...
+
+или используя:
+@user_passes_test(email_check, login_url='/login/')
+def my_view(request):
+    ...
+
+

@@ -1,0 +1,11 @@
+1597  cd frontend
+ 1598  ls -l package.json
+ 1599  npm install
+ 1600  ls -l node_modules/.bin
+ 1601  ls -l node_modules/.bin/
+ 1602  npm install
+ 1603  node_modules/.bin/bower install
+ 1604  ls -l node_modules/bower
+ 1605  ls -l node_modules/bower/bin
+ 1606  node_modules/bower/bin/bower install
+

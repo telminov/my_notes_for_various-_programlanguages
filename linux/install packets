@@ -1,0 +1,42 @@
+mylinux там посмотри(там все круче )
+  
+  sudo apt-get update &&
+    sudo apt-get upgrade &&
+
+sudo apt-get install openjdk-7-jre
+sudo apt-get install python-pip
+sudo apt-get install python-dev
+sudo apt-get install virtualenv
+sudo apt-get install virtualenvwrapper npm
+
+    sudo apt-get install libgdal-dev dh-autoreconf htop docker gdal-bin python-numpy python-scipy liblapack-dev libatlas-dev python-dev python-setuptools gfortran python-pandas python-matplotlib ipython ipython-notebook python-nose python-sympy curl tree postgresql-9.3 postgresql-server-dev-9.3 postgresql-client-9.3 libblas-dev nginx nginx-full terminator git git-core git-flow python-virtualenv virtualenvwrapper python-pip subversion openjdk-7-jdk nano build-essential protobuf-compiler libprotobuf-dev postgresql-9.3 postgresql-client-9.3 
+
+sudo apt-get install arduino | 
+sudo usermod -a -G tty pi
+sudo usermod -a -G dialout pi
+
+
+##############zsh
+
+там до этого нужно настроечку сделать, чтоб вместо баша zsh вылезал
+oh-my-zsh   
+темы
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+#############pip
+если не вылезает в zsh 
+sudo pip uninstall virtualenvwrapper (или в apt-get remove )
+sudo pip install virtualenvwrapper
+
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/local/bin/virtualenvwrapper.sh
+############python3.5.*
+download archive python3.5*
+unpack
+cd python3.5*
+./configure
+sudo make 
+sudo make install
+
+

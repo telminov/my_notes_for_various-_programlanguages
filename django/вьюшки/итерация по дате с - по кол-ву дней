@@ -1,0 +1,4 @@
+
+
+for single_date in (day_min + datetime.timedelta(n) for n in range(day_count)):
+        count_request_day.append(request_log.filter())

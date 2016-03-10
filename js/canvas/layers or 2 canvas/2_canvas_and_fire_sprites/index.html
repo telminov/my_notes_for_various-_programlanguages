@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		body {
+			background: #897;
+			text-align: center;
+			margin-top: 10%;
+		}
+	</style>
+</head>
+<body>
+
+	<a href="#" onclick="return add_sprites()">link</a>
+	<div style="position: relative;">
+		<canvas id="1canvas"  style="position: absolute; left: 0; top: 0; z-index: 0;" width="640" height="480"> </canvas>
+		<canvas id="spriteCanvas" style="position: absolute; left: 0; top: 0; z-index: 1;" width="640" height="480"> </canvas>
+	</div>
+
+	<script type="text/javascript" src="sprite2.js"></script>
+	<script type="text/javascript" src="shot_scprite.js"></script>
+	<script type="text/javascript">
+		//////////////////////////first canvas///////////////////////
+		// Show loading notice
+		console.log('video');
+		var canvas = document.getElementById('1canvas');
+		var ctx = canvas.getContext('2d');
+		var image = new Image();
+		image.src = 'my.jpg';
+		image.onload = function() {
+			ctx.drawImage(image, 0, 0, 640, 480);
+
+		};
+		console.log('first');
+		//////first_canvas 1 seconds later
+		var image3 = new Image();
+		image3.src = 'my.jpg';
+		setTimeout(function() {
+			ctx.drawImage(image3, 0, 0, 400, 480);
+			console.log('eee');
+		}, 5000);
+
+		///////////////////////2canvas////////////////////////////
+		var sprite_canvas = document.getElementById('spriteCanvas');
+		var url_image_sprites = "sprite_bullet_and_fire.png";
+		var sprites = [];
+
+		//задание времени, через которое будет отображаться в с
+        function fire() {
+        	console.log("GO");
+	        setTimeout(function(){
+	            //кол-во действий в сек
+	            var interval_id = setInterval(play, 1000 / 50);
+	        }, 1000);
+	    }
+		fire();
+
+		function play() {
+			for (var i=0; i<sprites.length; i++){
+				if (sprites[i].end_this_sprites == true)
+						sprites.splice(i--, 1); //a = 3 //delete me
+				else
+					sprites[i].play();
+			}
+		}
+
+		function add_sprites() {
+			var sprite = create_fire_and_bullet(url_image_sprites, sprite_canvas);
+			sprites.push(sprite)
+		}
+
+	</script>
+</body>
+</html>

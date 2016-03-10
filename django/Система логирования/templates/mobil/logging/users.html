@@ -1,0 +1,16 @@
+{% extends 'mobil/base_report.html' %}
+
+{% block table_content %}
+
+    <tr>
+        <td>#</td>
+        <td>Пользователь</td>
+    </tr>
+    {% for obj in object_list %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td><a href='{% url 'mobil.views.report.logging_for_username' obj.id %}'>{{ obj.username }}</a></td>
+    </tr>
+    {% endfor %}
+
+{% endblock table_content %}

@@ -1,0 +1,32 @@
+;-ѕоиск максимального в одномерном постусловие
+DATA SEGMENT PARA PUBLIC 'DATA';??????? ??????
+A	DB	1,5,3,2,4
+N	DW	4
+MAX	DB	?
+DATA ENDS
+;-----------------------------
+STK SEGMENT STACK;??????? ?????
+         DB     256 DUP(0)
+STK ENDS
+;-----------------------------
+CODE SEGMENT PARA PUBLIC 'CODE'; ??????? ????
+MAIN PROC
+    ASSUME CS:CODE, DS:DATA, SS:STK
+        MOV         AX,DATA
+        MOV         DS,AX
+	XOR DI,DI
+	MOV AL,A
+	INC DI
+	MOV CX,N
+M1:	CMP A[DI],AL
+	JLE M2
+	MOV AL,A[DI]
+M2:	INC DI
+	CMP DI,CX
+	JL M1
+	MOV MAX,AL
+    MOV AX,4C00h
+        INT    21h
+MAIN ENDP
+CODE ENDS
+            END   MAIN

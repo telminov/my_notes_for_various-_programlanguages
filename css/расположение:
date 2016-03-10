@@ -1,0 +1,18 @@
+#main {
+    border: 1px solid #000000;
+    display: flex;
+    flex-wrap: wrap;
+    align-content:center;
+}
+
+align-content:center;
+
+align-content:flex-start;  вначале
+
+align-content:flex-end;
+
+align-content:space-between;  по бокам (если есть возможность разделиться)
+
+align-content:space-around;
+
+

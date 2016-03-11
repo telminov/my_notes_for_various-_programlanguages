@@ -31,19 +31,7 @@ with patch.dict(foo, {'newkey': 'newvalue'}, clear=True):
 print foo
 assert foo == original
 
-#класс замена метода
-from mock import MagicMock
-class ProductionClass(object):
-    def method(self):
-        self.something(1, 2, 3)
-    def something(self, a, b, c):
-        print 100500
 
-real = ProductionClass()
-real.something(1,3,4)
-real.something = MagicMock()
-real.method()
-real.something.assert_called_once_with(1, 2, 3) #ХЗ ЗАЧЕм
 
 # классы
 class ProductionClass(object):

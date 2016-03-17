@@ -1,0 +1,39 @@
+class Shaver{
+    int mRazors;
+    Shaver(int razorCount){
+        this.mRazors=razorCount;
+    }
+ 
+    void shave(int stubble){
+        while(stubble>=mRazors){
+            stubble-=this.mRazors;
+        }
+    }
+}
+
+class ShaverWithTrimmer extends Shaver {
+ 
+    ShaverWithTrimmer(int razorCount) {
+        super(razorCount);
+        this.mRazors++;
+    }
+ 
+    void trim() {
+        // Тут как-то ровняем
+    }
+ 
+    @Override // переопределение
+    void shave(int stubble) {
+        super.shave(stubble);
+        this.trim();
+}
+}
+----------------------------------------------------------
+Shaver [] shavers = new Shaver[2];
+shavers[0] = new Shaver(3);
+shavers[1] = new ShaverWithTrimmer(3);
+for (Shaver s: shavers){
+    s.shave(0);
+}
+
+_________________________________

@@ -1,0 +1,62 @@
+int a=1,b=2;
+if (a>b)
+{
+    System.out.println("a>b");
+}
+else
+{
+    System.out.println("a<=b");
+}
+
+---------------------------------------------------
+int a;
+a=(int)(Math.random()*4);
+switch (a)
+{
+	case 0:
+	{
+	    System.out.print("Значение а = 0");
+	    break;
+	}
+	case 1:
+	{
+	    System.out.print("Значение а = 1");
+	    break;
+	}
+	case 2:
+	{
+	    System.out.print("Значение а = 2");
+	    break;
+	}
+	default:
+	{
+	    System.out.print("Значение а какое-то другое");
+	}
+}
+
+-------------------------------------------------------------
+for (int i = 0; i<10; i++)
+{
+    System.out.println(i);
+}
+
+int k = 15;
+for (float i = 0; i<k; i+=1.5)
+{
+    System.out.println(i);
+}
+
+--------------------------------
+while (a<10)
+{
+	System.Out.Print(a);
+	a++;
+}
+
+
+do
+{
+        действия
+}
+while(условие);
+

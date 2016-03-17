@@ -1,0 +1,95 @@
+public class line {
+ public float x1,y1,x2,y2;
+ 
+ public line(float x1, float y1, float x2, float y2)
+ {
+ this.x1=x1;
+ this.y1=y1;
+ this.x2=x2;
+ this.y2=y2;
+ }
+}
+
+line l = new line(1,1,2,2);
+l.x1=3;
+------------------------------------
+
+public class line {
+    public float x1,y1,x2,y2;
+    public float length;
+    public line(float x1, float y1, float x2, float y2)
+    {
+        this.x1=x1;
+        this.y1=y1;
+        this.x2=x2;
+        this.y2=y2;
+        calculateLength();
+    }
+ 
+    public void calculateLength()
+    {
+        length=(float) Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
+    }
+}
+--------------------------------------------------------------------
+спрячем поля класса модификатором private и обеспечим к ним доступ через специальные методы доступа (еще такие методы называются аксессорами)
+package ru.davidmd.testapp;
+ 
+public class line {
+    private float x1,y1,x2,y2;
+    private float length;
+ 
+    public line(float x1, float y1, float x2, float y2)
+    {
+        this.x1=x1;
+        this.y1=y1;
+        this.x2=x2;
+        this.y2=y2;
+        calculateLength();
+    }
+ 
+    private void calculateLength()
+    {
+        length=(float) Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
+    }
+ 
+    public void setX1(float x1) {
+        this.x1 = x1;
+        calculateLength();
+    }
+ 
+    public void setY1(float y1) {
+        this.y1 = y1;
+        calculateLength();
+    }
+ 
+    public void setX2(float x2) {
+        this.x2 = x2;
+        calculateLength();
+    }
+ 
+    public void setY2(float y2) {
+        this.y2 = y2;
+        calculateLength();
+    }
+ 
+    public float getLength() {
+        return length;
+    }
+}
+--------------------------------------------------------
+public class printableLine extends line {
+ 
+    public printableLine(float x1, float y1, float x2, float y2) {
+        super(x1, y1, x2, y2);
+    }
+    public void print()
+    {
+        System.out.println("point 1 - ("+this.x1+","+this.y1+"");
+        System.out.println("point 1 - ("+this.x2+","+this.y2+"");
+    }
+}
+Оп-па! А вот тут мы сталкиваемся с ошибочкой! Ведь поля класса родителя скрыты от нас, и значит распечатать их мы не можем! Но выход, как говорится, всегда есть. Достаточно просто поменять для полей x1, y1, x2, y2 модификатор доступа private на protected и мы получим доступ к этим полям из всех классов-потомков, однако для других классов они останутся недоступны!
+
+
+--------------------------------------

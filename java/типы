@@ -1,0 +1,18 @@
+boolean    true false
+!(not) нет   &&(and) и   || (or)или  ^ исклю ИЛИ (xor)  
+
+byte, short, int, long - целые числа
+float   с двойной точн double
+
+int a = 3, c;
+float b = 4.5;
+c = (int) (a + b);
+
+	
+char c = 'q';
+
+
+int [] a = new int[3];  массив и 3 переменных типа int
+int [] a = {1,2,3};
+
+

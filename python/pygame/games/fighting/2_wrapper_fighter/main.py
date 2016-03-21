@@ -16,8 +16,6 @@ def main():
 
     game_events = GameEvents(list_fighters)
 
-    pygame.draw.line(game.window, (0, 0, 255), (0, 0), (639, 479))
-
     while True:
 
         game.clear_screen() #clear_screen
@@ -26,7 +24,6 @@ def main():
 
         game_events.set_pushed_keys()
         game_events.get_action_by_pushed_keys()
-
         game.update()
 
 

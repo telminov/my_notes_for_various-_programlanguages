@@ -21,4 +21,3 @@ class Game(object):
     def update(self):
         pygame.display.update()
 
-

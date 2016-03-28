@@ -72,28 +72,5 @@ real.something.assert_called_once_with(1, 2, 3) #ХЗ ЗАЧЕм
  #########смотри в podmena.py
 
 
-####################################################################
-# МОИ ИГРЫ
-class ExampleCls(object):
-    a = 56
-    b = 43
-    sum = lambda self: self.a + self.b
-    sum_g = lambda self, g: self.a + self.b + g
-    sum_m= lambda self: self.m() + self.a
-
-m = lambda : 12
-
-a = ExampleCls()
-a.m = m
-print a.sum_m()
-
-a = ExampleCls()
-print(a.sum())
-print(a.sum_g(123))
-a.sum = lambda self: self.a + self.b
-print a.sum()
-mock = Mock(spec=ExampleCls())
-print(mock.b)
-##############################
 
 

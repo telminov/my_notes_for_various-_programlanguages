@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from pygame import *
-
+import os
 import pyganim
 
 PLATFORM_WIDTH = 32

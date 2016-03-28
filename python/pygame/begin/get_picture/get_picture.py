@@ -15,7 +15,7 @@ next_jpg = pygame.image.load('5.jpg').convert_alpha()
 
 #########################начало
 screen.blit(background, (0, 0)) # объединяет поверхность-фон с черной поверхностью экрана
-screen.blit(next_jpg, (150, 50))
+screen.blit(next_jpg, (150, 50), )
 while True:
     pygame.display.update()
 

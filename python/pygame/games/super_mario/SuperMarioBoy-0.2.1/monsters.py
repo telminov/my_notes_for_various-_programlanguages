@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from pygame import *
-
 import pyganim
+import os
 
 MONSTER_WIDTH = 32
 MONSTER_HEIGHT = 32

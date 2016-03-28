@@ -126,7 +126,6 @@ def main():
         #entities.draw(screen) # отображение
         for e in entities:
             screen.blit(e.image, camera.apply(e))
-        
         pygame.display.update()     # обновление и вывод всех изменений на экран
         
 

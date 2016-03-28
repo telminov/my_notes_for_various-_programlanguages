@@ -4,10 +4,9 @@
 # Импортируем библиотеку pygame
 import pygame
 from pygame import *
-
+from player import *
 from blocks import *
 from monsters import *
-from player import *
 
 #Объявляем переменные
 WIN_WIDTH = 800 #Ширина создаваемого окна

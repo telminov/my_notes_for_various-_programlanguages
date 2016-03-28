@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 
 from pygame import *
-
+import pyganim
+import os
 import blocks
 import monsters
-import pyganim
 
 MOVE_SPEED = 7
 MOVE_EXTRA_SPEED = 2.5 # ускорение

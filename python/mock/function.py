@@ -25,6 +25,7 @@ values = {'a': 1, 'b': 2, 'c': 3}
 def side_effect(arg):
      return values[arg]
 
+
 mock.side_effect = side_effect
 print mock('a'), mock('b'), mock('c')
 #(1, 2, 3)

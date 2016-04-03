@@ -9,7 +9,9 @@ pip install selenium
 
 http://docs.seleniumhq.org/download/   скачай яву сервер
 java -jar selenium-server-standalone-2.x.x.jar    запусти меня
-(например) java -jar selenium-server-standalone-2.53.0.jar -role hub
+(например)
+java -jar selenium-server-standalone-2.53.0.jar -role hub
+
 2.53 - версия silen
 
 ------------------------------------------- где именно яву сервер искатьь

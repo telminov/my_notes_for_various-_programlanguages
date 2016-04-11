@@ -12,6 +12,8 @@ source /usr/local/bin/virtualenvwrapper.sh
 mkvirtualenv * - создаем вирт окружение *   (напитоне 2.7)
 или 
 virtualenv --no-site-packages --distribute -p /usr/bin/python3.4 ~/.virtualenvs/*    (создаем вирт окружение на питоне 3.4 )
+
+(-p /usr/bin/python3.4) - можно заменить на другой путь, где лежит ваш python
 al
 deactivate   -выходим из него
 workon *  - заходим

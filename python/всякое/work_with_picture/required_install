@@ -1,0 +1,15 @@
+matplotlib
+ipython
+numpy
+cv2
+
+(python2.7)
+
+
+openCV install
+git clone https://github.com/Itseez/opencv.git
+git clone https://github.com/Itseez/opencv_contrib.git
+
+cd ~/opencv
+mkdir build
+cd build

@@ -1,0 +1,16 @@
+sudo apt-get update && 
+sudo apt-get upgrade &&
+
+sudo apt-get install  htop docker python-dev python-setuptools ipython ipython-notebook python-nose python-sympy git python-virtualenv virtualenvwrapper python-pip openjdk-7-jdk nano zsh npm nodejs libzmq-dev scrot 
+
+sudo apt-get install arduino && sudo usermod -a -G tty nicking && sudo usermod -a -G dialout nicking
+
+###########################
+sudo apt-get install python python-tk idle python-pmw python-imaging
+########################
+.bashrc  и .zshrcе
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/local/bin/virtualenvwrapper.sh
+###########################
+

@@ -1,6 +1,6 @@
 // sensor connected to:
 const int analog2 = A2;
-const int analog1 = A1;
+const int analog1 = 9;
 
 void setup()
 {

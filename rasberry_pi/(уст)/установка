@@ -1,1 +1,10 @@
-git clone 
+# ставим систему (описание в raspberry_install_os)
+
+# подключаемся по ssh ()
+# (уже работаем в терминале rasp)
+sudo apt-get install nano 
+touch install_for_pr.sh
+# запихиваем в него nano install_for_pr.sh содержимое из install_for_project.sh
+
+chmod +x install_for_pr.sh
+./install_for_pr.sh

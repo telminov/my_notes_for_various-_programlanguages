@@ -1,0 +1,45 @@
+1 скачать SDformater   (отформатировать флешку)
+2 через rufus ставить прошивки
+
+
+NOOBS -
+(с руками )
+форматнули флешку и скачали содержимое
+дальше на самое rasp все устанавливаем
+(raspbian весит около 3.3 г)
+(установка без рук) --------------------------------------------------------------------------------------------------
+форматнули флешку и скачали содержимое
+перешли в папочку /os и удалили все кроме Raspbian
+редактируем (создаем) \os\Raspbian\flavours.json
+{
+     "flavours": [
+       {
+         "name": "Raspbian",
+         "description": "A Debian wheezy port, optimised for the Raspberry Pi"
+       }
+     ]
+   }
+
+дальше в /recovery.cmdline
+добавляем в конец silentinstall
+н-р было
+runinstaller quiet ramdisk_size=32768 root=/dev/ram0 init=/init vt.cur_default=1 elevator=deadline
+а станет 
+runinstaller quiet ramdisk_size=32768 root=/dev/ram0 init=/init vt.cur_default=1 elevator=deadline silentinstall 
+
+(не обязательно)
+в \os\Raspbian\os.json
+можно имя поменять и пароль
+----------после установки ---
+находим устройство (по ssh) - н-р через приложение для андроида Network Scanner (н-р будет 192.168.150.106)
+ssh pi@192.168.150.106  пароль raspberry
+если не заходит - то
+
+ssh-keygen -f "/home/nicking/.ssh/known_hosts" -R 192.168.150.106  # или это или ниже
+ssh-keyscan 192.168.150.106 >> ~/.ssh/known_hosts         # я ниже
+------------------------------------------------------------------------------------------------------
+
+ubuntu_mate - 
+форматнули
+через rufus поставили
+(mate после установки весит около 14 гигов ! жуть какая)

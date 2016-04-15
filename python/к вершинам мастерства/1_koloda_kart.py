@@ -3,6 +3,12 @@ import collections
 Card = collections.namedtuple('Card', ['rank', 'suit'])
 
 
+c = [1, 2, 3, 4, 5]
+
+g = [x+123123 for x in c]
+print(g)
+
+
 class FrenchDeck:
     ranks = [str(n) for n in range(2, 11)] + list('JQKA')
     suits = 'spades diamonds clubs hearts'.split()

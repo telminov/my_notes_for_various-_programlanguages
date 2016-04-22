@@ -32,7 +32,7 @@ int LaserShot::getCountShotsFromPortData(char portData)
     countShotsFromCase = 0;
     switch (portData) //читаем переменную (по 1 символу) с порта
     { 
-      case 'w':
+      case 'f':
       {
         int countShotsFromCase = 15;
         break;

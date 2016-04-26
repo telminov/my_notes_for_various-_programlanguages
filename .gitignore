@@ -15,5 +15,7 @@ angular/angular-phonecat/.DS_Store
 angular/angular-phonecat/angular-phonecat-snapshots
 angular/angular-phonecat/bower_components/
 
-.idea/
+bower_components
+.idea
+node_modules
 *pyc

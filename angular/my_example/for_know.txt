@@ -1,0 +1,106 @@
+ngini   - для начальных конфиг
+
+
+<div ng-init="name = 'world'">          // начальные данные
+    <p> Hello {{name}}
+      родитель
+    </p>
+</div>
+
+<li ng-repeat="phone in phones">         //FOR
+  <span>{{phone.name}}</span>
+  <p> {{phone.snippet}} </p>
+</li>
+
+
+
+<script>                                                     // родитель а внутри контроллер
+    var phonecatApp = angular.module('myAppName', []);
+
+    phonecatApp.controller('DemoCtrl', function($scope) {
+      $scope.name = 'Vasa'
+    });
+</script>
+<body ng-app="myAppName">
+    <div ng-init="name = 'world'">
+        <div ng-controller="DemoCtrl">
+            <p> Hello {{name}}</p>
+            Дочерняя фигня
+        </div>
+        <p> Hello {{name}}
+          родитель
+        </p>
+    </div>
+</body>
+
+<input type="checkbox"ng-model="ShowCheck"> CLICK ME     // checkbox
+<div ng-show="ShowCheck">
+    SHow ME
+</div>
+
+<input type="text" ng-model="name">          // из тектового поля куда нужно
+Hello {{name}}
+
+
+    var date = new Date();
+  $scope.today = date;
+  {{today | date:'dd-MM-yy'}}                 //ДАТА
+
+
+<input type="text" ng-model="query">      // ФИЛЬТР
+<div ng-repeat="phone in phones | filter:{name:query, status:true}">  вместо name можно взять $
+ ...
+</div>
+
+                                             // запрос на сервер
+ $http.get('phones/phones.json').success(function (data, status, headers, config) {
+    console.log( data);         //данные пришедшие
+      console.log(status);      //
+      console.log(headers);
+      console.log(config);      // данные при запросе
+
+  }).error(function () { });
+
+  $http.get(url, [config]),
+  $http.post(url, data, [config]),      /// ОТПРАВЛЯЕТ ДАННЫЕ ТОЛЬКО В JSON формате
+   $http.put(url, data, [config]),
+  $http.patch(url, data, [config]), $http.delete(url, [config]), $http.head(url, [config]), $http.jsonp(url, [config])
+
+  /////// при запросе может не быть доступа!!!
+  тогда либо ангуляр делаем как свое приложение, либо кроссдоменных аякс (где в хедер нужно прописать https://habrahabr.ru/post/114432/)
+
+
+
+                                                                            как задать контроллеры
+var phonecatApp = angular.module('phonecatApp', []); // самая главная штука, к ней будем приписыавть контроллеры  ng-app="phonecatApp"
+
+(1)
+phonecatApp.controller('PhoneListCtrl', function($scope, $http) { } // самый простой способ, при минификации будет ошибка (для ее решения смотри след способ)
+(2)
+function phoneListCtrl($scope, $http){}                      /гл-я функция
+phoneListCtrl.$inject = ['$scope', '$http'];   "!!!!"       //все зависимости сюды записываем, чтоб если минифицировали, у нас ни чего не повредилось
+phonecatApp.controller('PhoneListCtrl', PhoneListCtrl);      // передаем контроллер в гл штуку
+(2-я (1) без inject)
+function phoneListCtrl($scope, $http){ ... }
+phonecatApp.controller('PhoneListCtrl', ['$scope', '$http', PhoneListCtrl ]); //то же самое, что и в 2 ток inject сразу записываем
+(2-я (2))
+phonecatApp.controller('PhoneListCtrl', ['$scope', '$http', function($scope, $http){ ... } ]); //самое популярное
+
+
+<span class="label" ng-init="status = phone.status ? 'Есть в наличии' : 'Под заказ' " //если да, то выводится одно иначе
+    ng-class="{'label-success' : phone.status, 'label-warning' : !phone.status }" > // добавление класса
+      {{ status }}
+    </span>
+
+ЗАМЕНЯЙ src НА ng-src (чтоб лишний раз не ругался)
+
+
+----------------------------------------------------------------------
+$location - нужен для того, чтоб записывать,   для чтения и записи значений
+$location.url()
+$location.path()
+$location.search()
+$location.hash()
+
+__________--
+<script> angular-route.js   </script> - добавить в init

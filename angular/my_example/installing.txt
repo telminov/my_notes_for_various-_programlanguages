@@ -1,0 +1,18 @@
+node --version
+если ее нету sudo apt-get install node
+
+
+npm install
+bower install
+
+
+python -m SimpleHTTPServer   или так
+npm start  - запуск серва
+как попасть куда нужно
+http://0.0.0.0:8000/app
+
+npm test
+
+
+
+git checkout -f step-0

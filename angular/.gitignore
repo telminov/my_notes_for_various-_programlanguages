@@ -1,0 +1,16 @@
+angular/angular-seed/alogs/*
+angular/angular-seed/!.gitkeep
+angular/angular-seed/node_modules/
+angular/angular-seed/bower_components/
+angular/angular-seed/tmp
+angular/angular-seed/.DS_Store
+angular/angular-seed/.idea
+
+angular/angular-phonecat/logs/*
+angular/angular-phonecat/!.gitkeep
+angular/angular-phonecat/node_modules/
+angular/angular-phonecat/tmp
+angular/angular-phonecat/.idea
+angular/angular-phonecat/.DS_Store
+angular/angular-phonecat/angular-phonecat-snapshots
+angular/angular-phonecat/bower_components/

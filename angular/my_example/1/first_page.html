@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+
+    <script>
+    var phonecatApp = angular.module('myAppName', []);
+
+    phonecatApp.controller('DemoCtrl', function($scope) {
+      $scope.name = 'Vasa'
+    });
+  </script>
+</head>
+
+<body ng-app="myAppName">
+
+    <input type="text" ng-model="name">
+    Hello {{name}}
+
+    <br>
+    {{ 2+2 }}
+    <br>
+    <input type="checkbox"ng-model="ShowCheck"> CLICK ME
+    <div ng-show="ShowCheck">
+        SHow ME
+    </div>
+
+    <div ng-init="name = 'world'">
+
+        <div ng-controller="DemoCtrl">
+            <p> Hello {{name}}</p>
+            Дочерняя фигня
+        </div>
+        <p> Hello {{name}}
+          родитель
+        </p>
+    </div>
+
+</body>
+</html>

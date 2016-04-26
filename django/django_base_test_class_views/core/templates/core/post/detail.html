@@ -1,0 +1,11 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+    <p>{{ post.name }}</p>
+    <p>{{ post.text }}</p>
+
+    {% for comment in comments %}
+        <p>{{ comment.text }}</p>
+    {% endfor %}
+{% endblock content %}

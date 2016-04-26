@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+
+
+</head>
+
+<body ng-app>
+
+    <ul>
+        <li>1. Curency: {{234 | currency}} </li>
+        <li>2. Date {{12312312311 | date:'dd.MM.yyyy'}}</li>
+        <li>3. Number: {{1234.1 | number:3 }}</li> оставляет опрел кол-во символов после точки
+        <li>5. lowercase/ uppercase {{'wtf' | uppercase}} ; {{'wTF' | lowercase}}</li>
+        <li>6. JSON {{ {'name': 'Vasa', 'name2': 'Perya'} | json }}</li>
+        <li>6. JSON <pre>{{ {'name': 'Vasa', 'name2': 'Perya'} | json }}</pre></li>
+    </ul>
+
+фильтры для работы с массивами
+limitTo - как с массивами, так и с строками
+filter
+orderBy
+
+</body>
+</html>

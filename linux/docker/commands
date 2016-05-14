@@ -1,0 +1,41 @@
+---------------status---------------
+docker images
+docker info
+
+sudo docker -d              //find errors
+cat /var/log/upstart/docker.log
+
+docker ps
+docker kill
+webapp
+sudo service docker restart
+
+-----------run-------------------
+sudo docker run -i -t ubuntu /bin/bash         //
+docker exec -it %containername% bash
+docker run --name test1 -it ubuntu_utopic:14.10 /bin/bash    
+docker run --name habrabuntu -t -i ubuntu
+           
+docker run -i -t 066b799ea548 /bin/bash
+docker run --name city -d ubuntu /bin/bash -c "while true; do echo hello world; sleep 1; done"
+
+-----------start--------------------
+docker start stupefied_lovelace
+docker attach stupefied_lovelace                  //уточнить разницу
+------------------------------
+
+
+
+------------control docker for next docker
+docker run -v /var/run/docker.sock:/var/run/docker.sock \
+       -v $(which docker):/bin/docker \
+       -ti ubuntu
+
+
+------------namespaces-------------
+pid: для изоляции процесса;
+net: для управления сетевыми интерфейсами;
+ipc: для управления IPC ресурсами. (ICP: InterProccess Communication);
+mnt: для управления точками монтирования;
+utc: для изолирования ядра и контроля генерации версий(UTC: Unix timesharing system).
+

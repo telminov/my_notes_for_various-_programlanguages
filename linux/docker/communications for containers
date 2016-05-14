@@ -1,0 +1,16 @@
+2  через проброс портов и линковку контейнеров.
+
+--------------Проброс портов------------------
+docker run -p 127.0.0.1:80:80
+docker run -p 80:80/udp
+
+EXPOSE в DockerFile   с портом
+EXPOSE 80
+
+-----------Линковка контейнеров-----------
+docker run -d -P --name web --link db:db trukhinyuri/webapp python app.py
+Через переменные окружения
+Через /etc/hosts
+
+Переменные окружения можно посмотреть, выполнив команду env:
+sudo docker run --rm --name web2 --link db:db training/webapp env

@@ -1,0 +1,33 @@
+apt-get -y install docker.io
+
+ln -sf /usr/bin/docker.io /usr/local/bin/docker
+sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
+
+update-rc.d docker.io defaults
+
+
+add user 
+sudo usermod -aG docker ${USER}
+
+
+UBUNTU
+docker pull ubuntu
+
+docker run -i -t ubuntu /bin/bash
+
+
+-----------------------------------
+// if errors with mnt not find  in Mint
+ apt-get install aufs-tools 
+apt-get install libcgroup1
+
+sudo apt-get -y install lxc
+sudo gpasswd -a ${USER} docker
+newgrp docker
+sudo service docker restart
+--------------------------
+
+
+http://stackoverflow.com/questions/22555264/docker-hello-world-not-working/22555932#22555932
+http://unix.stackexchange.com/questions/249425/cant-run-docker-hello-world-mountpoint-for-devices-not-found
+

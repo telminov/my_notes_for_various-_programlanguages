@@ -1,0 +1,4 @@
+find file contains pyqt in name
+
+find | grep "pyqt*"
+
